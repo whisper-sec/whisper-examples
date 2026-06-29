@@ -1,0 +1,1 @@
+{ "type": "module", "dependencies": { "whisper-id": "^0.2.0" } }
