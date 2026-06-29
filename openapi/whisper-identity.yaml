@@ -1,0 +1,76 @@
+# SPDX-License-Identifier: MIT
+# Whisper Agent Identity — keyless public API (no key). Import this into a low-code platform
+# (Power Platform custom connector, Zapier, Make, Pipedream, …) to add Whisper identity actions.
+openapi: 3.0.3
+info:
+  title: Whisper Agent Identity (keyless)
+  description: >
+    Verify a Whisper agent identity and look up its public record. Keyless — no API key.
+    An agent is a routable IPv6 /128 (AS219419) whose identity is verifiable from the
+    outside (DANE + DNSSEC + reverse-DNS + JWS).
+  version: "1.0.0"
+  license:
+    name: MIT
+servers:
+  - url: https://rdap.whisper.online
+paths:
+  /verify-identity:
+    get:
+      operationId: verifyIdentity
+      summary: Verify that an address is a real Whisper agent
+      parameters:
+        - name: ip
+          in: query
+          required: true
+          description: An agent /128 (or its FQDN).
+          schema: { type: string }
+      responses:
+        "200":
+          description: It is a Whisper agent — verdict returned.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Verdict" }
+        "404": { description: Not a Whisper agent. }
+        "400": { description: Malformed address. }
+  /ip/{address}:
+    get:
+      operationId: rdap
+      summary: Public RDAP record for a Whisper /128
+      parameters:
+        - name: address
+          in: path
+          required: true
+          description: An agent /128.
+          schema: { type: string }
+      responses:
+        "200":
+          description: The RDAP record.
+          content:
+            application/rdap+json:
+              schema: { type: object }
+        "404": { description: No record. }
+  /egress-ip:
+    get:
+      operationId: egressIp
+      summary: The caller's current egress IP as seen by Whisper
+      responses:
+        "200":
+          description: The egress IP.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: { ip: { type: string } }
+components:
+  schemas:
+    Verdict:
+      type: object
+      properties:
+        is_whisper_agent: { type: boolean }
+        fqdn: { type: string }
+        operator: { type: string }
+        tenant: { type: string }
+        dane_ok: { type: boolean }
+        jws_ok: { type: boolean }
+        verified_at: { type: integer, format: int64 }
+        evidence: { type: object }
