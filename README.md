@@ -24,6 +24,9 @@ if (await verify(addr)) console.log((await rdap(addr)).name);
 Each sample verifies an agent identity at the edge: `GET /?addr=<agent /128 or fqdn>` →
 `{ is_whisper_agent, rdap }`.
 
+**Self-hosting an agent platform** (Dify, RAGFlow, Qwen-Agent, FastGPT, Coze, …)? See
+[`self-hosted/`](self-hosted/) - add the Whisper MCP server *and* egress from your `/128`.
+
 > **Identity vs egress.** These edge runtimes run on the provider's IPs, so the samples do
 > **identity/verify/resolve** (keyless). To make traffic *leave from* your `/128`, run the
 > Whisper CLI or the [container sidecar](https://github.com/whisper-sec/whisper-cli) on a host
