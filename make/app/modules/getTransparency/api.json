@@ -1,0 +1,10 @@
+{
+  "url": "/ip/{{parameters.address}}/transparency",
+  "method": "GET",
+  "qs": {
+    "limit": "{{parameters.limit}}"
+  },
+  "response": {
+    "output": "{{body}}"
+  }
+}

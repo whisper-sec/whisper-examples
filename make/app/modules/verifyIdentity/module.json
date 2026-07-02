@@ -1,0 +1,7 @@
+{
+  "name": "verifyIdentity",
+  "label": "Verify agent identity",
+  "description": "Run the full Whisper-agent verification chain server-side for one IPv6 address (reverse PTR, forward-confirming AAAA / FCrDNS, DANE-TLSA pin, and the signed identity document) and return a single verdict: whether the address is a real Whisper agent, its canonical hostname, its operator/tenant, and the supporting evidence. Keyless.",
+  "typeId": 4,
+  "connection": null
+}

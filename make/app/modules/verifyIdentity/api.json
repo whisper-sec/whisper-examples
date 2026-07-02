@@ -1,0 +1,17 @@
+{
+  "url": "/verify-identity",
+  "method": "GET",
+  "qs": {
+    "ip": "{{parameters.ip}}"
+  },
+  "response": {
+    "output": "{{body}}",
+    "error": {
+      "404": {
+        "type": "DataError",
+        "message": "Not a Whisper agent: {{parameters.ip}} - {{ifempty(body.detail, 'no anchoring identity (no PTR, or no confirming forward AAAA)')}}"
+      },
+      "message": "[{{statusCode}}] Whisper verify-identity failed for {{parameters.ip}}: {{ifempty(body.detail, body.title)}}"
+    }
+  }
+}

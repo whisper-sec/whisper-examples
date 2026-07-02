@@ -1,0 +1,12 @@
+{
+  "baseUrl": "https://rdap.whisper.online",
+  "headers": {
+    "accept": "application/json",
+    "user-agent": "whisper-make/1.0 (+https://whisper.online)"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper API error: {{ifempty(body.detail, ifempty(body.title, 'request to rdap.whisper.online failed'))}}"
+    }
+  }
+}

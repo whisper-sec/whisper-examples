@@ -1,0 +1,24 @@
+[
+  {
+    "help": "What to list.",
+    "name": "kind",
+    "type": "select",
+    "label": "Kind",
+    "default": "agents",
+    "options": [
+      {
+        "label": "Agents",
+        "value": "agents"
+      },
+      {
+        "label": "Identities",
+        "value": "identities"
+      },
+      {
+        "label": "Records",
+        "value": "records"
+      }
+    ],
+    "required": true
+  }
+]

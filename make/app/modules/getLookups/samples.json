@@ -1,0 +1,16 @@
+{
+  "object": "identity-lookups",
+  "address": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+  "count": 51,
+  "lookups": [
+    {
+      "ts": 1782919008979,
+      "kind": "lookups",
+      "qname": "ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online.",
+      "qtype": "RDAP",
+      "rcode": "FOUND",
+      "source": "rdap",
+      "agent": "ae3b051ff3bf7f478"
+    }
+  ]
+}

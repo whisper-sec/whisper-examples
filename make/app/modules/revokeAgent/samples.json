@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "rows": [
+    [
+      "ae3b051ff3bf7f478",
+      "revoked"
+    ]
+  ],
+  "agent": "ae3b051ff3bf7f478",
+  "status": "revoked",
+  "columns": [
+    "agent",
+    "status"
+  ]
+}

@@ -39,8 +39,10 @@ workerd cannot nest the target's TLS inside a raw tunnel) - the sample code bare
 **Self-hosting an agent platform** (Dify, RAGFlow, Qwen-Agent, FastGPT, Coze, …)? See
 [`self-hosted/`](self-hosted/) - add the Whisper MCP server *and* egress from your `/128`.
 
-**Low-code / RPA** (Power Platform, Zapier, Make, Pipedream)? Import the keyless
-[OpenAPI spec](openapi/) to build a connector with verify / RDAP / egress-IP actions.
+**Low-code / RPA**? [Make (Integromat)](https://www.make.com) gets the full two-tier
+custom app - [`make/`](make/) - keyless verify / RDAP / transparency plus the keyed
+control plane (register, policy, logs, revoke) in your scenarios. For Power Platform,
+Zapier, and Pipedream, import the keyless [OpenAPI spec](openapi/).
 
 **Python?** [`modal/`](modal/) is the Python sample - the PyPI
 [`whisper-id`](https://pypi.org/project/whisper-id/) SDK baked into a Modal image, keyless

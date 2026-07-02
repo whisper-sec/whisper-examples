@@ -1,0 +1,7 @@
+{
+  "name": "listAgents",
+  "label": "List",
+  "description": "List your tenant's fleet (op:list): agents, identities, or DNS records. Returns rows of [kind, item] where each item is a named object (label, address, fqdn, agent, state). Iterate rows downstream.",
+  "typeId": 4,
+  "connection": "whisper-jijvrd"
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "name": "rdapConformance",
+    "type": "array",
+    "label": "RDAP conformance",
+    "spec": {
+      "type": "text"
+    }
+  },
+  {
+    "name": "objectClassName",
+    "type": "text",
+    "label": "Object class"
+  },
+  {
+    "name": "handle",
+    "type": "text",
+    "label": "Handle"
+  },
+  {
+    "name": "startAddress",
+    "type": "text",
+    "label": "Start address"
+  },
+  {
+    "name": "endAddress",
+    "type": "text",
+    "label": "End address"
+  },
+  {
+    "name": "ipVersion",
+    "type": "text",
+    "label": "IP version"
+  },
+  {
+    "name": "name",
+    "type": "text",
+    "label": "Name"
+  },
+  {
+    "name": "type",
+    "type": "text",
+    "label": "Type"
+  },
+  {
+    "name": "status",
+    "type": "array",
+    "label": "Status",
+    "spec": {
+      "type": "text"
+    }
+  },
+  {
+    "name": "country",
+    "type": "text",
+    "label": "Country"
+  },
+  {
+    "name": "behavioral_posture",
+    "type": "text",
+    "label": "Behavioural posture"
+  },
+  {
+    "name": "entities",
+    "type": "array",
+    "label": "Entities",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        {
+          "name": "objectClassName",
+          "type": "text",
+          "label": "Object class"
+        },
+        {
+          "name": "handle",
+          "type": "text",
+          "label": "Handle"
+        },
+        {
+          "name": "roles",
+          "type": "array",
+          "label": "Roles",
+          "spec": {
+            "type": "text"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "events",
+    "type": "array",
+    "label": "Events",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        {
+          "name": "eventAction",
+          "type": "text",
+          "label": "Event action"
+        },
+        {
+          "name": "eventDate",
+          "type": "text",
+          "label": "Event date"
+        }
+      ]
+    }
+  },
+  {
+    "name": "links",
+    "type": "array",
+    "label": "Links",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        {
+          "name": "rel",
+          "type": "text",
+          "label": "Rel"
+        },
+        {
+          "name": "href",
+          "type": "text",
+          "label": "Href"
+        },
+        {
+          "name": "type",
+          "type": "text",
+          "label": "Type"
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Title"
+        }
+      ]
+    }
+  },
+  {
+    "name": "notices",
+    "type": "array",
+    "label": "Notices",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "name": "description",
+          "type": "array",
+          "label": "Description",
+          "spec": {
+            "type": "text"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "remarks",
+    "type": "array",
+    "label": "Remarks",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        {
+          "name": "description",
+          "type": "array",
+          "label": "Description",
+          "spec": {
+            "type": "text"
+          }
+        }
+      ]
+    }
+  }
+]

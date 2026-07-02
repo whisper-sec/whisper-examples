@@ -1,0 +1,7 @@
+[
+  {
+    "name": "ip",
+    "type": "text",
+    "label": "Egress IP"
+  }
+]

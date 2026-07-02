@@ -1,0 +1,17 @@
+{
+  "url": "/ip/{{parameters.address}}",
+  "method": "GET",
+  "headers": {
+    "accept": "application/rdap+json"
+  },
+  "response": {
+    "error": {
+      "404": {
+        "type": "DataError",
+        "message": "No Whisper agent identity for {{parameters.address}}: {{ifempty(first(body.description), 'no RDAP record')}}"
+      },
+      "message": "[{{statusCode}}] Whisper RDAP lookup failed for {{parameters.address}}: {{ifempty(body.title, statusCode)}}"
+    },
+    "output": "{{body}}"
+  }
+}

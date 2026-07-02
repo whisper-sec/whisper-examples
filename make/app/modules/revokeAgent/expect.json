@@ -1,0 +1,9 @@
+[
+  {
+    "help": "The agent to revoke - use the agent id from Register/List (e.g. agent-…). A /128 address is also accepted. IRREVERSIBLE.",
+    "name": "agent",
+    "type": "text",
+    "label": "Agent (id or /128)",
+    "required": true
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "name": "address",
+    "type": "text",
+    "label": "Agent IPv6 address",
+    "help": "The IPv6 /128 address to look up, e.g. 2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478.",
+    "required": true
+  }
+]

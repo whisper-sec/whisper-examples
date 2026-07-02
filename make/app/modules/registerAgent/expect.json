@@ -1,0 +1,15 @@
+[
+  {
+    "help": "The new agent's human name (its friendly label, surfaced in listings and RDAP), e.g. scout.",
+    "name": "label",
+    "type": "text",
+    "label": "Agent name",
+    "required": true
+  },
+  {
+    "help": "Optional public contact, surfaced in the agent's RDAP record.",
+    "name": "contact_email",
+    "type": "email",
+    "label": "Contact email"
+  }
+]

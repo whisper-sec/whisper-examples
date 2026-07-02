@@ -1,0 +1,22 @@
+{
+  "log": {
+    "sanitize": [
+      "request.headers.x-api-key"
+    ]
+  },
+  "url": "https://graph.whisper.security/api/query",
+  "body": {
+    "query": "CALL whisper.agents({op:'list', args:{kind:'agents'}})"
+  },
+  "method": "POST",
+  "headers": {
+    "x-api-key": "{{connection.apiKey}}",
+    "content-type": "application/json"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper rejected this API key: {{ifempty(body.detail, ifempty(body.title, 'invalid or unauthorized key - paste a valid whisper_live_ key'))}}"
+    },
+    "valid": "{{statusCode === 200}}"
+  }
+}

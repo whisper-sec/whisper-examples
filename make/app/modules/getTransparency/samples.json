@@ -1,0 +1,36 @@
+{
+  "object": "identity-transparency",
+  "address": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+  "count": 1,
+  "events": [
+    {
+      "event": {
+        "action": "issuance",
+        "address": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+        "holder": "tdc38e7c55bad3306a92b830f9bb1e4f9",
+        "agent": "ae3b051ff3bf7f478",
+        "timestamp": 1782516674390
+      },
+      "proof": "1af4f72a999eb7eae70f988f8e25310595409f8db05a6ee0b84a199bd4845d9a",
+      "prev_proof": ""
+    }
+  ],
+  "root_hash": "1af4f72a999eb7eae70f988f8e25310595409f8db05a6ee0b84a199bd4845d9a",
+  "root_signature_alg": "ES256",
+  "ledger": {
+    "object": "ledger-inclusion",
+    "origin": "whisper.online/ledger",
+    "tree_size": 7,
+    "leaves": [
+      {
+        "index": 0,
+        "leaf_hash": "9e47e79ecfecbce8babb888fc7f7e3481b45fb5b1d5c4492671e69a0042e119a",
+        "inclusion_proof": [
+          "82f522c46fcaad3f3aa070b468be09dbf1b532e98aa1615b5b1141bf81ca281f",
+          "b19e49843367422013a66b799da22f495683d6c9a78e7087e5a5119071dc9647",
+          "71aa86e7f7f0ec1c610522dbf7f6fa053dbd8a93a0a3fae86bd935612cab5d9b"
+        ]
+      }
+    ]
+  }
+}

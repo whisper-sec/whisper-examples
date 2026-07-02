@@ -1,0 +1,9 @@
+[
+  {
+    "help": "Your whisper_live_ owner key from https://whisper.online. Unlocks the control plane (Register Agent, Set Policy, Get Logs, Revoke, List). Stored encrypted by Make and sent only to the Whisper control plane over TLS; it is never logged. Leave the keyless identity modules on a connectionless run.",
+    "name": "apiKey",
+    "type": "password",
+    "label": "Whisper API key",
+    "required": true
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "name": "egressIp",
+  "label": "Get my egress IP",
+  "description": "The public IP this call reaches Whisper from, as seen by the Whisper edge (keyless GET /egress-ip). Useful to see which IP your scenario egresses from - and why Make-hosted steps cannot source from an agent /128 (run the agent egress where you control the network).",
+  "typeId": 4,
+  "connection": null
+}

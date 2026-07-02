@@ -1,0 +1,16 @@
+[
+  {
+    "name": "address",
+    "type": "text",
+    "label": "Agent IPv6 address",
+    "help": "The IPv6 /128 address whose transparency log to read, e.g. 2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478.",
+    "required": true
+  },
+  {
+    "name": "limit",
+    "type": "number",
+    "label": "Maximum events",
+    "help": "Maximum number of events to return (server default 1000, capped at 10000).",
+    "required": false
+  }
+]
