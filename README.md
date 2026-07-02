@@ -35,14 +35,14 @@ workerd cannot nest the target's TLS inside a raw tunnel) — the sample code ba
 | Netlify Functions | [`netlify/`](netlify/) | `netlify deploy` |
 | Browserbase (cloud browser, BYOP) | [`browserbase/`](browserbase/) | `node index.mjs` |
 | Modal (Python) | [`modal/`](modal/) | `modal run egress.py` |
+| Zapier (native two-tier app) | [`zapier/`](zapier/) | `zapier push` |
 
 **Self-hosting an agent platform** (Dify, RAGFlow, Qwen-Agent, FastGPT, Coze, …)? See
 [`self-hosted/`](self-hosted/) — add the Whisper MCP server *and* egress from your `/128`.
 
-**Low-code / RPA**? [Make (Integromat)](https://www.make.com) gets the full two-tier
-custom app — [`make/`](make/) — keyless verify / RDAP / transparency plus the keyed
-control plane (register, policy, logs, revoke) in your scenarios. For Power Platform,
-Zapier, and Pipedream, import the keyless [OpenAPI spec](openapi/).
+**Low-code / RPA?** Native two-tier apps for **Zapier** ([`zapier/`](zapier/)), **Make** ([`make/`](make/)),
+and **Pipedream** — keyless verify/RDAP plus the full keyed control plane (register / policy / logs / revoke).
+For Power Platform (and any OpenAPI host), import the keyless [OpenAPI spec](openapi/).
 
 **Python?** [`modal/`](modal/) is the Python sample — the PyPI
 [`whisper-id`](https://pypi.org/project/whisper-id/) SDK baked into a Modal image, keyless
