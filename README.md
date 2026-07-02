@@ -31,12 +31,17 @@ fetch-forward gateway on fetch-only sandboxes) - the sample code never changes.
 | AWS Lambda | [`lambda/`](lambda/) | zip + Function URL / API Gateway |
 | Supabase Edge Functions | [`supabase/`](supabase/) | `supabase functions deploy` |
 | Netlify Functions | [`netlify/`](netlify/) | `netlify deploy` |
+| Browserbase (cloud browser, BYOP) | [`browserbase/`](browserbase/) | `node index.mjs` |
 
 **Self-hosting an agent platform** (Dify, RAGFlow, Qwen-Agent, FastGPT, Coze, …)? See
 [`self-hosted/`](self-hosted/) - add the Whisper MCP server *and* egress from your `/128`.
 
 **Low-code / RPA** (Power Platform, Zapier, Make, Pipedream)? Import the keyless
 [OpenAPI spec](openapi/) to build a connector with verify / RDAP / egress-IP actions.
+
+**Cloud browsers** (Browserbase)? Bring your own proxy: point the session's external-proxy
+config at the Whisper egress - [`browserbase/`](browserbase/) - and the browser's public
+address becomes your agent's routable `/128`.
 
 ## Status
 
