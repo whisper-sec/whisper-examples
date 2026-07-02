@@ -1,0 +1,11 @@
+{
+  "url": "/ip/{{parameters.address}}/lookups",
+  "method": "GET",
+  "qs": {
+    "kind": "{{parameters.kind}}",
+    "limit": "{{parameters.limit}}"
+  },
+  "response": {
+    "output": "{{body}}"
+  }
+}

@@ -1,0 +1,139 @@
+[
+  {
+    "name": "object",
+    "type": "text",
+    "label": "Object"
+  },
+  {
+    "name": "address",
+    "type": "text",
+    "label": "Address"
+  },
+  {
+    "name": "count",
+    "type": "number",
+    "label": "Count"
+  },
+  {
+    "name": "events",
+    "type": "array",
+    "label": "Events",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        {
+          "name": "event",
+          "type": "collection",
+          "label": "Event",
+          "spec": [
+            {
+              "name": "action",
+              "type": "text",
+              "label": "Action"
+            },
+            {
+              "name": "address",
+              "type": "text",
+              "label": "Address"
+            },
+            {
+              "name": "holder",
+              "type": "text",
+              "label": "Holder"
+            },
+            {
+              "name": "agent",
+              "type": "text",
+              "label": "Agent"
+            },
+            {
+              "name": "timestamp",
+              "type": "number",
+              "label": "Timestamp (epoch ms)"
+            }
+          ]
+        },
+        {
+          "name": "proof",
+          "type": "text",
+          "label": "Proof"
+        },
+        {
+          "name": "prev_proof",
+          "type": "text",
+          "label": "Previous proof"
+        }
+      ]
+    }
+  },
+  {
+    "name": "root_hash",
+    "type": "text",
+    "label": "Root hash"
+  },
+  {
+    "name": "root_signature",
+    "type": "text",
+    "label": "Root signature (JWS)"
+  },
+  {
+    "name": "root_signature_alg",
+    "type": "text",
+    "label": "Root signature algorithm"
+  },
+  {
+    "name": "ledger",
+    "type": "collection",
+    "label": "Ledger inclusion",
+    "spec": [
+      {
+        "name": "object",
+        "type": "text",
+        "label": "Object"
+      },
+      {
+        "name": "origin",
+        "type": "text",
+        "label": "Origin"
+      },
+      {
+        "name": "tree_size",
+        "type": "number",
+        "label": "Tree size"
+      },
+      {
+        "name": "checkpoint",
+        "type": "text",
+        "label": "Checkpoint"
+      },
+      {
+        "name": "leaves",
+        "type": "array",
+        "label": "Leaves",
+        "spec": {
+          "type": "collection",
+          "spec": [
+            {
+              "name": "index",
+              "type": "number",
+              "label": "Index"
+            },
+            {
+              "name": "leaf_hash",
+              "type": "text",
+              "label": "Leaf hash"
+            },
+            {
+              "name": "inclusion_proof",
+              "type": "array",
+              "label": "Inclusion proof",
+              "spec": {
+                "type": "text"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

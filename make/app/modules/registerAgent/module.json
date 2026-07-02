@@ -1,0 +1,7 @@
+{
+  "name": "registerAgent",
+  "label": "Register Agent",
+  "description": "Mint a brand-new Whisper agent with its own routable IPv6 /128 identity and its own API key (op:register). Returns the agent id, /128 address, canonical FQDN, PTR, and the new agent's API key — shown ONCE, so capture it. Requires your whisper_live_ key with admin:dns scope.",
+  "typeId": 4,
+  "connection": "whisper-jijvrd"
+}

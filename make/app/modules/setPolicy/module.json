@@ -1,0 +1,7 @@
+{
+  "name": "setPolicy",
+  "label": "Set Policy",
+  "description": "Set your tenant's DNS resolver policy (op:policy): the default action (allow or block), explicit block/allow domain lists, and named graph-backed posture bundles. This REPLACES the whole policy on each call. Returns the effective policy as key/value rows. Requires admin:dns scope.",
+  "typeId": 4,
+  "connection": "whisper-jijvrd"
+}

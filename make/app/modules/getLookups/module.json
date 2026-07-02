@@ -1,0 +1,7 @@
+{
+  "name": "getLookups",
+  "label": "Get inbound lookups",
+  "description": "Return the public feed of who has resolved or queried this agent's name: the PTR / AAAA / TLSA lookups against its authoritative-zone records and the RDAP accesses to it, each row k-anonymised to the source /48 (IPv6) or /24 (IPv4) prefix. Keyless.",
+  "typeId": 4,
+  "connection": null
+}

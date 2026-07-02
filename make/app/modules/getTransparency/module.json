@@ -1,0 +1,7 @@
+{
+  "name": "getTransparency",
+  "label": "Get transparency log",
+  "description": "Return the public, append-only, tamper-evident transparency log for an agent IPv6 /128: the ordered feed of issuance and revocation events, each chained to the previous by a SHA-256 proof, with a signed (ES256) chain root and an inclusion proof against the global Merkle ledger. Keyless.",
+  "typeId": 4,
+  "connection": null
+}

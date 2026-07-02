@@ -1,0 +1,141 @@
+[
+  {
+    "name": "is_whisper_agent",
+    "type": "boolean",
+    "label": "Is Whisper agent"
+  },
+  {
+    "name": "fqdn",
+    "type": "text",
+    "label": "FQDN"
+  },
+  {
+    "name": "operator",
+    "type": "text",
+    "label": "Operator"
+  },
+  {
+    "name": "tenant",
+    "type": "text",
+    "label": "Tenant"
+  },
+  {
+    "name": "dane_ok",
+    "type": "boolean",
+    "label": "DANE OK"
+  },
+  {
+    "name": "jws_ok",
+    "type": "boolean",
+    "label": "JWS OK"
+  },
+  {
+    "name": "verified_at",
+    "type": "number",
+    "label": "Verified at (epoch ms)"
+  },
+  {
+    "name": "detail",
+    "type": "text",
+    "label": "Detail"
+  },
+  {
+    "name": "evidence",
+    "type": "collection",
+    "label": "Evidence",
+    "spec": [
+      {
+        "name": "address",
+        "type": "text",
+        "label": "Address"
+      },
+      {
+        "name": "ptr",
+        "type": "text",
+        "label": "PTR"
+      },
+      {
+        "name": "forward_aaaa",
+        "type": "text",
+        "label": "Forward AAAA"
+      },
+      {
+        "name": "agent",
+        "type": "text",
+        "label": "Agent"
+      },
+      {
+        "name": "allocated_at",
+        "type": "number",
+        "label": "Allocated at (epoch ms)"
+      },
+      {
+        "name": "posture",
+        "type": "text",
+        "label": "Connectivity posture"
+      },
+      {
+        "name": "dane_tlsa_sha256",
+        "type": "text",
+        "label": "DANE-TLSA SHA-256"
+      },
+      {
+        "name": "rdap",
+        "type": "url",
+        "label": "RDAP URL"
+      },
+      {
+        "name": "identity_doc",
+        "type": "url",
+        "label": "Identity document URL"
+      },
+      {
+        "name": "dane",
+        "type": "collection",
+        "label": "DANE",
+        "spec": [
+          {
+            "name": "usage",
+            "type": "number",
+            "label": "Usage"
+          },
+          {
+            "name": "selector",
+            "type": "number",
+            "label": "Selector"
+          },
+          {
+            "name": "matching",
+            "type": "number",
+            "label": "Matching"
+          },
+          {
+            "name": "profile",
+            "type": "text",
+            "label": "Profile"
+          },
+          {
+            "name": "strong_pin",
+            "type": "boolean",
+            "label": "Strong pin"
+          },
+          {
+            "name": "tlsa_owner",
+            "type": "text",
+            "label": "TLSA owner"
+          },
+          {
+            "name": "verify",
+            "type": "text",
+            "label": "Verify command"
+          },
+          {
+            "name": "served_leaf_matches",
+            "type": "boolean",
+            "label": "Served leaf matches"
+          }
+        ]
+      }
+    ]
+  }
+]

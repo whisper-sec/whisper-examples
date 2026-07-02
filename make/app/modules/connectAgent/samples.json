@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "dns": "",
+  "ptr": "8.7.4.f.7.f.b.3.f.f.1.5.0.b.3.e.7.1.7.6.a.9.6.b.1.0.a.2.4.0.a.2.ip6.arpa",
+  "tls": true,
+  "fqdn": "ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online",
+  "note": "Prefer http_proxy (https://, TLS-to-proxy). connection_string is the proxychains/SOCKS fallback.",
+  "tier": "socks5",
+  "address": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+  "doh_url": "https://doh.whisper.online/dns-query",
+  "http_proxy": "",
+  "socks5_endpoint": "egress.whisper.online:1080",
+  "connection_string": ""
+}

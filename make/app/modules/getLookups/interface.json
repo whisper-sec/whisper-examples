@@ -1,0 +1,62 @@
+[
+  {
+    "name": "object",
+    "type": "text",
+    "label": "Object"
+  },
+  {
+    "name": "address",
+    "type": "text",
+    "label": "Address"
+  },
+  {
+    "name": "count",
+    "type": "number",
+    "label": "Count"
+  },
+  {
+    "name": "lookups",
+    "type": "array",
+    "label": "Lookups",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        {
+          "name": "ts",
+          "type": "number",
+          "label": "Timestamp (epoch ms)"
+        },
+        {
+          "name": "kind",
+          "type": "text",
+          "label": "Kind"
+        },
+        {
+          "name": "qname",
+          "type": "text",
+          "label": "Query name"
+        },
+        {
+          "name": "qtype",
+          "type": "text",
+          "label": "Query type"
+        },
+        {
+          "name": "rcode",
+          "type": "text",
+          "label": "Response code"
+        },
+        {
+          "name": "source",
+          "type": "text",
+          "label": "Source"
+        },
+        {
+          "name": "agent",
+          "type": "text",
+          "label": "Agent"
+        }
+      ]
+    }
+  }
+]

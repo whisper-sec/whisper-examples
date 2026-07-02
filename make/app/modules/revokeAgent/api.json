@@ -1,0 +1,28 @@
+{
+  "log": {
+    "sanitize": [
+      "request.headers.x-api-key"
+    ]
+  },
+  "url": "https://graph.whisper.security/api/query",
+  "body": {
+    "query": "CALL whisper.agents({op:'revoke', args:{agent:'{{replace(parameters.agent, \"'\", \"''\")}}'}})"
+  },
+  "method": "POST",
+  "headers": {
+    "x-api-key": "{{connection.apiKey}}",
+    "content-type": "application/json"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper revoke failed: {{ifempty(body.detail, ifempty(body.title, 'the Whisper control plane rejected the request — check your API key and its scope'))}}"
+    },
+    "output": {
+      "ok": "{{ifempty(body.ok, get(get(body.rows, 1), 'ok'))}}",
+      "rows": "{{get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows')}}",
+      "agent": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 1)}}",
+      "status": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 2)}}",
+      "columns": "{{get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'columns')}}"
+    }
+  }
+}

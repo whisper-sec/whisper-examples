@@ -1,0 +1,7 @@
+{
+  "name": "connectAgent",
+  "label": "Get connection (egress) details",
+  "description": "Allocate or reuse an agent's SOCKS5 egress on its routable /128 and return the endpoint details. Proxy credentials (bearer-embedding fields) are STRIPPED by default — enable Include proxy credentials only if you understand they become part of the scenario execution history.",
+  "typeId": 4,
+  "connection": "whisper-jijvrd"
+}

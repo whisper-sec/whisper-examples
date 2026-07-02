@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "rows": [
+    [
+      "agents",
+      {
+        "fqdn": "ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online",
+        "agent": "ae3b051ff3bf7f478",
+        "label": "scout",
+        "state": "active",
+        "address": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478"
+      }
+    ]
+  ],
+  "count": 1,
+  "columns": [
+    "kind",
+    "item"
+  ]
+}

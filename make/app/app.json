@@ -1,0 +1,5 @@
+{
+  "label": "Whisper Agent Identity",
+  "description": "Give AI agents a real, routable IPv6 identity and operate them from your scenarios — two tiers in one app. KEYLESS (no account): verify whether an IPv6 address is a real Whisper agent and whose, read its RDAP record, tamper-evident transparency log, and inbound lookups. KEYED (your whisper_live_ API key): register agents (each gets its own /128 and key), set DNS policy, read logs, list your fleet, and revoke. IPv6 /128s from 2a04:2a01::/32 (AS219419).",
+  "theme": "#0e1116"
+}

@@ -1,0 +1,25 @@
+[
+  {
+    "name": "ok",
+    "type": "boolean",
+    "label": "OK"
+  },
+  {
+    "name": "policy",
+    "type": "array",
+    "label": "Effective policy (key/value rows)"
+  },
+  {
+    "name": "columns",
+    "spec": {
+      "type": "text"
+    },
+    "type": "array",
+    "label": "Result columns"
+  },
+  {
+    "name": "rows",
+    "type": "array",
+    "label": "Result rows"
+  }
+]

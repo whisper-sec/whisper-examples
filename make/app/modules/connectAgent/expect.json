@@ -1,0 +1,15 @@
+[
+  {
+    "help": "Optional. An agent id or its /128 address. Leave blank to reuse your most recently used agent (or allocate one).",
+    "name": "agent",
+    "type": "text",
+    "label": "Agent (id or /128)"
+  },
+  {
+    "help": "OFF (default): the bearer-embedding fields (http_proxy, connection_string) are stripped from the output. ON: they are included — they will be visible in this scenario's execution history to anyone who can open it. Prefer running the egress proxy where you control the network.",
+    "name": "include_credentials",
+    "type": "boolean",
+    "label": "Include proxy credentials",
+    "default": false
+  }
+]

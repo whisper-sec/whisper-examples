@@ -1,0 +1,30 @@
+{
+  "is_whisper_agent": true,
+  "fqdn": "ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online",
+  "operator": "tdc38e7c55bad3306a92b830f9bb1e4f9",
+  "tenant": "tdc38e7c55bad3306a92b830f9bb1e4f9",
+  "dane_ok": true,
+  "jws_ok": true,
+  "verified_at": 1782919008167,
+  "evidence": {
+    "address": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+    "ptr": "8.7.4.f.7.f.b.3.f.f.1.5.0.b.3.e.7.1.7.6.a.9.6.b.1.0.a.2.4.0.a.2.ip6.arpa",
+    "forward_aaaa": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+    "agent": "ae3b051ff3bf7f478",
+    "allocated_at": 1782516674390,
+    "posture": "tier1.5",
+    "dane_tlsa_sha256": "9ec1ef18a1f15e5480a0fc3c8d6e9690b2ccf1a7fa7146201940f28c422bb47d",
+    "rdap": "https://rdap.whisper.online/ip/2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+    "identity_doc": "https://ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online/.well-known/whisper-identity",
+    "dane": {
+      "usage": 3,
+      "selector": 1,
+      "matching": 1,
+      "profile": "DANE-EE 3 1 1 (DNSSEC-anchored TLSA; no public CA needed)",
+      "strong_pin": true,
+      "tlsa_owner": "_443._tcp.ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online",
+      "verify": "dig +dnssec TLSA _443._tcp.ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online (require the AD flag)",
+      "served_leaf_matches": true
+    }
+  }
+}

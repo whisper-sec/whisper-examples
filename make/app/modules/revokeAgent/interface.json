@@ -1,0 +1,30 @@
+[
+  {
+    "name": "agent",
+    "type": "text",
+    "label": "Agent"
+  },
+  {
+    "name": "status",
+    "type": "text",
+    "label": "Status"
+  },
+  {
+    "name": "ok",
+    "type": "boolean",
+    "label": "OK"
+  },
+  {
+    "name": "columns",
+    "spec": {
+      "type": "text"
+    },
+    "type": "array",
+    "label": "Result columns"
+  },
+  {
+    "name": "rows",
+    "type": "array",
+    "label": "Result rows"
+  }
+]

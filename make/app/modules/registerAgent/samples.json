@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "ptr": "8.7.4.f.7.f.b.3.f.f.1.5.0.b.3.e.7.1.7.6.a.9.6.b.1.0.a.2.4.0.a.2.ip6.arpa",
+  "fqdn": "ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online",
+  "rows": [
+    [
+      "whisper_live_REDACTED_shown_once_capture_it",
+      "ae3b051ff3bf7f478",
+      "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+      "ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online",
+      "8.7.4.f.7.f.b.3.f.f.1.5.0.b.3.e.7.1.7.6.a.9.6.b.1.0.a.2.4.0.a.2.ip6.arpa"
+    ]
+  ],
+  "agent": "ae3b051ff3bf7f478",
+  "address": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+  "api_key": "whisper_live_REDACTED_shown_once_capture_it",
+  "columns": [
+    "api_key",
+    "agent",
+    "address",
+    "fqdn",
+    "ptr"
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "ok",
+    "type": "boolean",
+    "label": "OK"
+  },
+  {
+    "name": "tier",
+    "type": "text",
+    "label": "Tier"
+  },
+  {
+    "name": "address",
+    "type": "text",
+    "label": "Agent /128 address"
+  },
+  {
+    "name": "fqdn",
+    "type": "text",
+    "label": "FQDN"
+  },
+  {
+    "name": "ptr",
+    "type": "text",
+    "label": "PTR name"
+  },
+  {
+    "name": "socks5_endpoint",
+    "type": "text",
+    "label": "SOCKS5 endpoint (host:port)"
+  },
+  {
+    "name": "dns",
+    "type": "text",
+    "label": "Direct resolver /128 (Tier-2)"
+  },
+  {
+    "name": "tls",
+    "type": "boolean",
+    "label": "TLS to proxy"
+  },
+  {
+    "name": "doh_url",
+    "type": "url",
+    "label": "DoH URL"
+  },
+  {
+    "name": "note",
+    "type": "text",
+    "label": "Transport note"
+  },
+  {
+    "name": "http_proxy",
+    "type": "text",
+    "label": "HTTP proxy URL (credential — empty unless included)"
+  },
+  {
+    "name": "connection_string",
+    "type": "text",
+    "label": "SOCKS5 connection string (credential — empty unless included)"
+  }
+]

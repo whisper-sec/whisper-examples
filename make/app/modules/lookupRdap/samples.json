@@ -1,0 +1,59 @@
+{
+  "rdapConformance": [
+    "rdap_level_0"
+  ],
+  "objectClassName": "ip network",
+  "handle": "ae3b051ff3bf7f478",
+  "startAddress": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+  "endAddress": "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+  "ipVersion": "v6",
+  "name": "scout",
+  "type": "Whisper agent identity",
+  "status": [
+    "active"
+  ],
+  "country": "NL",
+  "behavioral_posture": "clean-30d",
+  "entities": [
+    {
+      "objectClassName": "entity",
+      "handle": "tdc38e7c55bad3306a92b830f9bb1e4f9",
+      "roles": [
+        "registrant"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "eventAction": "registration",
+      "eventDate": "2026-06-26T23:31:14.390Z"
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://rdap.whisper.online/ip/2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+      "type": "application/rdap+json"
+    },
+    {
+      "rel": "related",
+      "href": "https://ae3b051ff3bf7f478.tdc38e7c55bad3306a92b830f9bb1e4f9.agents.whisper.online",
+      "title": "forward (AAAA)"
+    }
+  ],
+  "notices": [
+    {
+      "title": "Whisper RDAP",
+      "description": [
+        "Whisper agent-identity RDAP service. Base URL: https://rdap.whisper.online/"
+      ]
+    }
+  ],
+  "remarks": [
+    {
+      "description": [
+        "Whisper agent identity. The IPv6 /128 is the identity anchor: reverse PTR resolves to the agent's canonical name. Assigned from 2a04:2a01::/32 (AS219419, viaGraph B.V.). Connectivity posture: tier1.5. Behavioral posture: clean-30d."
+      ]
+    }
+  ]
+}

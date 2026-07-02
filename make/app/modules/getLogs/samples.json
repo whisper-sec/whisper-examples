@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "rows": [
+    [
+      "2026-06-26T23:35:00.000Z",
+      "dns",
+      "example.com.",
+      "AAAA",
+      "NOERROR",
+      "allow",
+      "graph",
+      "2a04:2a01:b69a:6717:e3b0:51ff:3bf7:f478",
+      3,
+      "ae3b051ff3bf7f478",
+      null,
+      null,
+      null,
+      null,
+      "",
+      "2a04:2a00::/32",
+      null,
+      null
+    ]
+  ],
+  "count": 1,
+  "columns": [
+    "ts",
+    "kind",
+    "qname",
+    "qtype",
+    "rcode",
+    "decision",
+    "source",
+    "answer",
+    "latency_ms",
+    "agent",
+    "peer",
+    "bytes_up",
+    "bytes_down",
+    "duration_ms",
+    "reason",
+    "client_src",
+    "packets_up",
+    "packets_down"
+  ]
+}

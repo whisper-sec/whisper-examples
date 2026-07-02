@@ -1,0 +1,7 @@
+{
+  "name": "revokeAgent",
+  "label": "Revoke",
+  "description": "Fully and irreversibly revoke an agent (op:revoke): withdraw its /128, PTR, tokens, and its API key. Returns the agent id and a status (revoked or not_found). Requires admin:dns scope. This cannot be undone.",
+  "typeId": 4,
+  "connection": "whisper-jijvrd"
+}

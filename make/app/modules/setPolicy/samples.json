@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "rows": [
+    [
+      "default",
+      "allow"
+    ],
+    [
+      "block",
+      "ads.example.com"
+    ],
+    [
+      "bundle",
+      "malware"
+    ]
+  ],
+  "policy": [
+    [
+      "default",
+      "allow"
+    ],
+    [
+      "block",
+      "ads.example.com"
+    ],
+    [
+      "bundle",
+      "malware"
+    ]
+  ],
+  "columns": [
+    "key",
+    "value"
+  ]
+}

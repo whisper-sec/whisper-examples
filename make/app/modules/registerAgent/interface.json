@@ -1,0 +1,45 @@
+[
+  {
+    "name": "api_key",
+    "type": "text",
+    "label": "API key (shown once)"
+  },
+  {
+    "name": "agent",
+    "type": "text",
+    "label": "Agent id"
+  },
+  {
+    "name": "address",
+    "type": "text",
+    "label": "IPv6 /128 address"
+  },
+  {
+    "name": "fqdn",
+    "type": "text",
+    "label": "FQDN"
+  },
+  {
+    "name": "ptr",
+    "type": "text",
+    "label": "PTR"
+  },
+  {
+    "name": "ok",
+    "type": "boolean",
+    "label": "OK"
+  },
+  {
+    "name": "columns",
+    "spec": {
+      "type": "text"
+    },
+    "type": "array",
+    "label": "Result columns"
+  },
+  {
+    "name": "rows",
+    "type": "array",
+    "label": "Result rows"
+  }
+]

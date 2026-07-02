@@ -1,0 +1,46 @@
+[
+  {
+    "help": "Optional. An agent id or its /128 address. Leave blank for your whole tenant.",
+    "name": "agent",
+    "type": "text",
+    "label": "Agent (id or /128)"
+  },
+  {
+    "help": "Optional. Filter by event kind; leave blank for all.",
+    "name": "kind",
+    "type": "select",
+    "label": "Kind",
+    "options": [
+      {
+        "label": "DNS",
+        "value": "dns"
+      },
+      {
+        "label": "Connections",
+        "value": "conn"
+      },
+      {
+        "label": "Allocations",
+        "value": "alloc"
+      }
+    ]
+  },
+  {
+    "help": "Optional window start: epoch-ms, RFC-3339, or relative like -1h / -7d. Blank = a default window.",
+    "name": "from",
+    "type": "text",
+    "label": "From"
+  },
+  {
+    "help": "Optional window end (same formats). Blank = now.",
+    "name": "to",
+    "type": "text",
+    "label": "To"
+  },
+  {
+    "help": "Optional. Max rows (default 1000, cap 10000).",
+    "name": "limit",
+    "type": "number",
+    "label": "Limit"
+  }
+]

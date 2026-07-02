@@ -1,0 +1,27 @@
+{
+  "log": {
+    "sanitize": [
+      "request.headers.x-api-key"
+    ]
+  },
+  "url": "https://graph.whisper.security/api/query",
+  "body": {
+    "query": "CALL whisper.agents({op:'policy', args:{allow:[{{if(length(parameters.allow) > 0, \"'\" + join(parameters.allow, \"','\") + \"'\", \"\")}}],block:[{{if(length(parameters.block) > 0, \"'\" + join(parameters.block, \"','\") + \"'\", \"\")}}],bundles:[{{if(length(parameters.bundles) > 0, \"'\" + join(parameters.bundles, \"','\") + \"'\", \"\")}}],default:'{{parameters.default}}'}})"
+  },
+  "method": "POST",
+  "headers": {
+    "x-api-key": "{{connection.apiKey}}",
+    "content-type": "application/json"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper set-policy failed: {{ifempty(body.detail, ifempty(body.title, 'the Whisper control plane rejected the request — check your API key and its scope'))}}"
+    },
+    "output": {
+      "ok": "{{ifempty(body.ok, get(get(body.rows, 1), 'ok'))}}",
+      "rows": "{{get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows')}}",
+      "policy": "{{get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows')}}",
+      "columns": "{{get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'columns')}}"
+    }
+  }
+}

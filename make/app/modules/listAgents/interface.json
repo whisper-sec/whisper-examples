@@ -1,0 +1,25 @@
+[
+  {
+    "name": "ok",
+    "type": "boolean",
+    "label": "OK"
+  },
+  {
+    "name": "count",
+    "type": "number",
+    "label": "Row count"
+  },
+  {
+    "name": "columns",
+    "spec": {
+      "type": "text"
+    },
+    "type": "array",
+    "label": "Result columns"
+  },
+  {
+    "name": "rows",
+    "type": "array",
+    "label": "Result rows ([kind, item] per row)"
+  }
+]

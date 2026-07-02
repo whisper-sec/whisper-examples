@@ -1,0 +1,36 @@
+{
+  "log": {
+    "sanitize": [
+      "request.headers.x-api-key",
+      "response.body"
+    ]
+  },
+  "url": "https://graph.whisper.security/api/query",
+  "body": {
+    "query": "CALL whisper.agents({op:'connect', args:{tier:'socks5'{{if(length(parameters.agent) > 0, \",agent:'\" + replace(parameters.agent, \"'\", \"''\") + \"'\", \"\")}}}})"
+  },
+  "method": "POST",
+  "headers": {
+    "x-api-key": "{{connection.apiKey}}",
+    "content-type": "application/json"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper connect failed: {{ifempty(body.detail, ifempty(body.title, 'the Whisper control plane rejected the request — check your API key and its scope'))}}"
+    },
+    "output": {
+      "ok": "{{ifempty(body.ok, get(get(body.rows, 1), 'ok'))}}",
+      "dns": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 8)}}",
+      "ptr": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 7)}}",
+      "tls": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 9)}}",
+      "fqdn": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 6)}}",
+      "note": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 10)}}",
+      "tier": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 1)}}",
+      "address": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 5)}}",
+      "doh_url": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 11)}}",
+      "http_proxy": "{{if(parameters.include_credentials, get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 2), '')}}",
+      "socks5_endpoint": "{{get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 4)}}",
+      "connection_string": "{{if(parameters.include_credentials, get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 3), '')}}"
+    }
+  }
+}

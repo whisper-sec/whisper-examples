@@ -1,0 +1,7 @@
+{
+  "name": "getLogs",
+  "label": "Get Logs",
+  "description": "Read recent per-tenant activity from warm storage (op:logs): DNS resolutions, egress connections, and identity allocations, optionally narrowed to one agent, kind, and time window. Returns the log rows (positional, aligned to the columns array). Iterate rows downstream.",
+  "typeId": 4,
+  "connection": "whisper-jijvrd"
+}

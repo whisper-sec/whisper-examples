@@ -1,0 +1,46 @@
+[
+  {
+    "help": "What to do for names not matched by a rule or bundle.",
+    "name": "default",
+    "type": "select",
+    "label": "Default action",
+    "default": "allow",
+    "options": [
+      {
+        "label": "Allow (block-list mode)",
+        "value": "allow"
+      },
+      {
+        "label": "Block (allow-list mode)",
+        "value": "block"
+      }
+    ]
+  },
+  {
+    "help": "Domains to block, e.g. ads.example.com. Applied verbatim (no embedded quotes).",
+    "name": "block",
+    "spec": {
+      "type": "text"
+    },
+    "type": "array",
+    "label": "Block domains"
+  },
+  {
+    "help": "Domains to always allow (useful with Default = Block).",
+    "name": "allow",
+    "spec": {
+      "type": "text"
+    },
+    "type": "array",
+    "label": "Allow domains"
+  },
+  {
+    "help": "Named graph-backed posture bundles to apply, e.g. malware, phishing.",
+    "name": "bundles",
+    "spec": {
+      "type": "text"
+    },
+    "type": "array",
+    "label": "Posture bundles"
+  }
+]
