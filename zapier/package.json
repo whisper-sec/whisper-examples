@@ -1,0 +1,16 @@
+{
+  "name": "whisper-identity-zapier",
+  "version": "1.0.0",
+  "description": "Whisper agent identity for Zapier - keyless verify/RDAP + full control plane (register, policy, logs, revoke, egress) with an API key.",
+  "scripts": {
+    "test": "jest --testTimeout 10000"
+  },
+  "dependencies": {
+    "zapier-platform-core": "19.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.0"
+  },
+  "private": true,
+  "main": "index.js"
+}
