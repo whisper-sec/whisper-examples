@@ -1,37 +1,88 @@
 # Whisper on AWS Lambda
 
-```js
-import { verify, agentEgress } from "whisper-edge";
-if (await verify(addr)) { /* keyless - no key needed */ }
-const egress = await agentEgress(apiKey); // with a key - real egress from the agent's /128
-```
+Give any Lambda a real, verifiable Whisper agent identity - and make its outbound
+traffic leave from the agent's routable IPv6 `/128`, not Lambda's IP.
 
-## Tier 1 - keyless verify (works right now, no key)
+## The public layer - zero bundling (Python)
 
 ```
-GET ?addr=<agent /128 or fqdn>
+arn:aws:lambda:eu-north-1:205639151085:layer:whisper-id-egress:1
+```
+
+One public MIT layer bundling [`whisper-id`](https://pypi.org/project/whisper-id/) +
+`requests` + `PySocks`. Pure Python - the same layer works on **python3.12 and 3.13,
+x86_64 and arm64**. Attach it and `import whisper_id` just works:
+
+```bash
+aws lambda update-function-configuration --function-name my-fn \
+  --layers arn:aws:lambda:eu-north-1:205639151085:layer:whisper-id-egress:1
+```
+
+(Layers attach within their region; from another region, copy it once -
+`aws lambda get-layer-version-by-arn …` then `publish-layer-version` in yours - or just
+vendor the three pip packages.)
+
+## The handler - `handler.py`
+
+Two tiers, per Postel:
+
+**Tier 1 - keyless verify (no credentials at all):**
+
+```
+{"addr": "<agent /128 or fqdn>"}   or   GET ?addr=…
 → { address, is_whisper_agent, rdap }
 ```
 
-## Tier 2 - keyed egress (needs `WHISPER_API_KEY`)
+`whisper_id.verify()` runs the full server-side trust chain (DANE + DNSSEC +
+reverse-DNS + JWS) over one HTTPS GET - works in any runtime, no CLI, no key.
+
+**Tier 2 - keyed egress (your traffic, your `/128`):**
 
 ```
-GET ?egress=1
-→ { tier: "egress", agent, seen_ip, egress_source_header, matches_agent_address: true }
+{"egress": "1"}   or   GET ?egress=1
+→ { tier: "egress", seen_ip, is_whisper_agent, matches_agent_address: true }
 ```
 
-`seen_ip` comes back from `https://v6.ident.me/` **through** `egress.fetch` - the request left
-Lambda from the agent's routable Whisper `/128`, not Lambda's IP. On Lambda's Node runtime
-`agentEgress` opens a `node:net`/`node:tls` CONNECT tunnel; the transport is chosen for you.
-
-Set `WHISPER_API_KEY` as a function environment variable before deploying.
+`seen_ip` comes back from `https://v6.ident.me` fetched **through** the Whisper egress
+proxy - the request left AWS from your agent's routable `/128`. The proxy URL is an
+`https://` scheme proxy (TLS-in-TLS), so the egress token travels inside TLS end to end.
+A freshly minted token is retried on 407 while it propagates across anycast nodes, and
+the forward gateway (`WHISPER_FORWARD_URL`) is the automatic one-hop fallback.
 
 ## Deploy
 
-Zip `handler.mjs` + `node_modules` (after `npm i`) and upload, or point a Function URL / API
-Gateway route at `handler.handler`. Node 18+ runtime (global `fetch` required).
+```bash
+zip function.zip handler.py
+aws lambda create-function --function-name whisper-egress \
+  --runtime python3.12 --architectures arm64 \
+  --role <your-lambda-exec-role-arn> --handler handler.handler --timeout 120 \
+  --layers arn:aws:lambda:eu-north-1:205639151085:layer:whisper-id-egress:1 \
+  --zip-file fileb://function.zip \
+  --environment 'Variables={WHISPER_EGRESS=https://w:<egress-token>@connect.whisper.online:443,WHISPER_FORWARD_URL=https://forward.whisper.online,WHISPER_AGENT=<your /128>}'
 
-Status: both tiers are live code paths, proven against the Whisper control plane and gateway from
-Node (same SDK, same code path `agentEgress` calls into - Lambda's Node runtime is the same
-engine this was tested on). An actual Lambda deploy is yours to run - this repo ships the
-handler, not a live Function URL.
+aws lambda invoke --function-name whisper-egress \
+  --cli-binary-format raw-in-base64-out --payload '{"egress":"1"}' out.json && cat out.json
+```
+
+Mint the agent + egress token with the control plane (`pip install whisper-id`, then
+`whisper_id.register()` / the `whisper` CLI - `curl get.whisper.online | sh`). Put the
+token in the function environment (or Secrets Manager), **never** in code.
+
+Environment (tier 2 only):
+
+| Variable | Value |
+|---|---|
+| `WHISPER_EGRESS` | `https://w:<egress-token>@connect.whisper.online:443` |
+| `WHISPER_FORWARD_URL` | `https://forward.whisper.online` (fallback, optional) |
+| `WHISPER_AGENT` | your agent's `/128` (optional - enables `matches_agent_address`) |
+
+Status: **proven end-to-end on a real Lambda** (python3.12, arm64, eu-north-1) - a live
+invoke fetched the v6 echo through the Whisper proxy and the observed IP was exactly the
+agent's `/128` (`matches_agent_address: true`), with the keyless verify tier confirmed
+from inside the same function.
+
+## Node instead?
+
+`handler.mjs` is the same two-tier recipe on the npm
+[`whisper-edge`](https://www.npmjs.com/package/whisper-edge) SDK - `npm i whisper-edge`,
+zip with `node_modules`, Node 18+ runtime, set `WHISPER_API_KEY` for the egress tier.
