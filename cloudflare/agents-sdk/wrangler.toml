@@ -1,0 +1,11 @@
+name = "whisper-mcp-agent"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[durable_objects]
+bindings = [{ name = "MCP_OBJECT", class_name = "WhisperMcp" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["WhisperMcp"]

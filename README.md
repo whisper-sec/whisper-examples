@@ -20,12 +20,14 @@ const res = await egress.fetch("https://api.example.com"); // this request LEAVE
 
 Every sample exposes both: `GET /?addr=<agent /128 or fqdn>` for tier 1, `GET /?egress=1` for
 tier 2 (exact paths per platform - see each folder). `whisper-edge` auto-detects the runtime and
-picks the best egress transport (a raw CONNECT tunnel on Node/Deno/Cloudflare Workers, or the
-fetch-forward gateway on fetch-only sandboxes) - the sample code never changes.
+picks the best egress transport (a raw CONNECT tunnel on Node/Deno, or the fetch-forward
+gateway on fetch-only sandboxes; on Cloudflare Workers pass `{ transport: "forward" }` -
+workerd cannot nest the target's TLS inside a raw tunnel) - the sample code barely changes.
 
 | Runtime | Folder | Deploy |
 |---------|--------|--------|
 | Cloudflare Workers | [`cloudflare/`](cloudflare/) | `wrangler deploy` |
+| Cloudflare Agents SDK (MCP tools) | [`cloudflare/agents-sdk/`](cloudflare/agents-sdk/) | `wrangler deploy` |
 | Vercel Functions (+ AI SDK tools) | [`vercel/`](vercel/) | `vercel deploy` |
 | Deno Deploy | [`deno/`](deno/) | `deployctl deploy` |
 | AWS Lambda | [`lambda/`](lambda/) | zip + Function URL / API Gateway |
