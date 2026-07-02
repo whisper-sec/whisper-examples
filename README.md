@@ -32,12 +32,17 @@ fetch-forward gateway on fetch-only sandboxes) - the sample code never changes.
 | Supabase Edge Functions | [`supabase/`](supabase/) | `supabase functions deploy` |
 | Netlify Functions | [`netlify/`](netlify/) | `netlify deploy` |
 | Browserbase (cloud browser, BYOP) | [`browserbase/`](browserbase/) | `node index.mjs` |
+| Modal (Python) | [`modal/`](modal/) | `modal run egress.py` |
 
 **Self-hosting an agent platform** (Dify, RAGFlow, Qwen-Agent, FastGPT, Coze, …)? See
 [`self-hosted/`](self-hosted/) - add the Whisper MCP server *and* egress from your `/128`.
 
 **Low-code / RPA** (Power Platform, Zapier, Make, Pipedream)? Import the keyless
 [OpenAPI spec](openapi/) to build a connector with verify / RDAP / egress-IP actions.
+
+**Python?** [`modal/`](modal/) is the Python sample - the PyPI
+[`whisper-id`](https://pypi.org/project/whisper-id/) SDK baked into a Modal image, keyless
+verify plus real egress from the agent's `/128` through the Whisper proxy.
 
 **Cloud browsers** (Browserbase)? Bring your own proxy: point the session's external-proxy
 config at the Whisper egress - [`browserbase/`](browserbase/) - and the browser's public
