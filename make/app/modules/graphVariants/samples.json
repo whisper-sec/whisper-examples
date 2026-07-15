@@ -1,0 +1,9 @@
+{
+  "domain": "paypal.com",
+  "count": 2,
+  "columns": ["variant", "method", "exists", "confidence"],
+  "rows": [
+    { "variant": "paipal.com", "method": "BITSQUATTING", "exists": true, "confidence": 0.9 },
+    { "variant": "paypa1.com", "method": "HOMOGLYPH", "exists": true, "confidence": 0.9 }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "graphAssess",
+  "label": "Query security graph (threat posture)",
+  "description": "Ask the Whisper security graph (3.6B+ nodes of DNS/BGP/threat intelligence) for a labelled threat posture and vendor/operator identity of a hostname or IP - whisper.assess (malicious/benign label, severity band, evidence) plus whisper.identify (who operates it). A direct Cypher read, bound server-side as a $-parameter. Keyless - no API key needed.",
+  "typeId": 4,
+  "connection": null
+}

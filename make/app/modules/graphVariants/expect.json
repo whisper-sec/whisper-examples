@@ -1,0 +1,9 @@
+[
+  {
+    "name": "domain",
+    "type": "text",
+    "label": "Brand domain",
+    "help": "The domain to generate look-alike variants of, e.g. `paypal.com`. Bound server-side as a Cypher $-parameter.",
+    "required": true
+  }
+]

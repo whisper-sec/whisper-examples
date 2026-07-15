@@ -52,6 +52,64 @@ verify plus real egress from the agent's `/128` through the Whisper proxy.
 config at the Whisper egress - [`browserbase/`](browserbase/) - and the browser's public
 address becomes your agent's routable `/128`.
 
+## Query the security graph
+
+The same two-tier idea, for **intelligence**. The Whisper security graph is 3.6B+ nodes of
+DNS / BGP / threat intelligence (`HOSTNAME`, `IPV4`/`IPV6`, `ORGANIZATION`, `ASN`; relationships
+like `RESOLVES_TO`, `NAMESERVER_FOR`, `LINKS_TO`). The **direct read verbs** answer **keyless** -
+no key, no account, one HTTPS POST - so an edge function can label a host, name its operator, or
+enumerate typosquats with **zero secrets to manage**. Raw Cypher and the multi-step catalog
+recipes unlock with an API key.
+
+```js
+// Keyless: threat posture for a host. Runs in any runtime - no key, no SDK.
+const res = await fetch("https://graph.whisper.security/api/query", {
+  method: "POST",
+  headers: { "content-type": "application/json", "user-agent": "my-app/1.0" },
+  body: JSON.stringify({
+    query: "CALL whisper.assess($v) YIELD host, label, band, coverage, evidence",
+    parameters: { v: ["theblackservicenetwork.com"] },
+  }),
+});
+const { columns, rows } = await res.json();   // rows are objects keyed by column
+// -> [{ host: "theblackservicenetwork.com", label: "malicious", band: "CRITICAL", ... }]
+```
+
+```sh
+# The same call, keyless, from a shell:
+curl -s https://graph.whisper.security/api/query \
+  -H 'content-type: application/json' \
+  -d '{"query":"CALL whisper.identify($v) YIELD host, canonical_name, category, roles","parameters":{"v":["api.openai.com"]}}'
+```
+
+Every serverless folder ships a copy-paste `graph` example with the same two tiers:
+
+| Runtime | Graph example |
+|---------|---------------|
+| Cloudflare Workers | [`cloudflare/graph/`](cloudflare/graph/) |
+| Cloudflare Agents SDK (MCP tools) | `whisper_assess` (keyless) · `whisper_graph_query` / `whisper_graph_recipe` (keyed) in [`cloudflare/agents-sdk/`](cloudflare/agents-sdk/) |
+| Vercel Functions (+ AI SDK tools) | [`vercel/api/graph.js`](vercel/api/graph.js) · `whisperAssessTool` / `whisperGraphQueryTool` in [`vercel/whisper-tool.js`](vercel/whisper-tool.js) |
+| Deno Deploy | [`deno/graph.ts`](deno/graph.ts) |
+| AWS Lambda | [`lambda/graph.mjs`](lambda/graph.mjs) |
+| Supabase Edge Functions | [`supabase/functions/graph/`](supabase/functions/graph/) |
+| Netlify Functions | [`netlify/netlify/functions/graph.mjs`](netlify/netlify/functions/graph.mjs) |
+| Modal (Python) | [`modal/graph.py`](modal/graph.py) |
+| Zapier | Assess Host · Find Look-alike Domains (keyless) · Run Cypher Query (keyed) in [`zapier/`](zapier/) |
+| Make | Query security graph · Run a graph recipe (keyless) · Run raw Cypher (keyed) in [`make/`](make/) |
+
+- **Two tiers.** The 13 direct read verbs (`assess`, `identify`, `variants`, `walk`, `explain`,
+  `origins`, `history`, `psl-*`, `asSet`, `lookupTorRelay`, `db.schema`) are keyless and
+  rate-limited (~100/window). Raw Cypher, the multi-step flows, and `submit` need `X-API-Key`;
+  sending a key on any call also lifts the keyless rate limit.
+- **Parameterise.** Pass values in `parameters` and reference them as `$name` in the query - they
+  are bound server-side, so a value can never break out of the Cypher, however hostile.
+- **One concurrent keyless query.** The keyless tier serves one query at a time per caller, so run
+  keyless reads sequentially (not `Promise.all`); a key lifts that limit.
+- **Named recipes** live in the [`whisper-catalog`](https://github.com/whisper-sec/whisper-catalog)
+  (typosquat, attack-surface, subdomain-takeover, bgp-hijack-exposure, ...). Docs:
+  [www.whisper.security/docs](https://www.whisper.security/docs) - each verb has a page under
+  `/docs/whisper-graph/procedures`, each recipe under `/docs/recipes`.
+
 ## Status
 
 Every tier-1 and tier-2 code path in these samples is proven end-to-end against the live Whisper

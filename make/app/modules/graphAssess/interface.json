@@ -1,0 +1,33 @@
+[
+  {
+    "name": "host",
+    "type": "text",
+    "label": "Host"
+  },
+  {
+    "name": "count",
+    "type": "number",
+    "label": "Row count"
+  },
+  {
+    "name": "columns",
+    "type": "array",
+    "label": "Columns",
+    "spec": { "type": "text" }
+  },
+  {
+    "name": "rows",
+    "type": "array",
+    "label": "Rows",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        { "name": "host", "type": "text", "label": "Host" },
+        { "name": "label", "type": "text", "label": "Threat label" },
+        { "name": "band", "type": "text", "label": "Severity band" },
+        { "name": "coverage", "type": "text", "label": "Coverage" },
+        { "name": "evidence", "type": "array", "label": "Evidence", "spec": { "type": "text" } }
+      ]
+    }
+  }
+]

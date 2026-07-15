@@ -28,6 +28,20 @@ instead - same code either way.)
 
 Set `WHISPER_API_KEY` in the site's environment variables before deploying (`netlify env:set`).
 
+## Also here: query the security graph
+
+[`netlify/functions/graph.mjs`](netlify/functions/graph.mjs) queries the Whisper security graph
+(3.6B+ nodes of DNS / BGP / threat intelligence) with plain `fetch` - no dependency:
+
+```
+GET /.netlify/functions/graph?host=<fqdn|ip>     -> keyless: threat posture + operator identity
+GET /.netlify/functions/graph?variants=<domain>  -> keyless: registered look-alike domains
+GET /.netlify/functions/graph?typosquat=<domain> -> keyed:   the "typosquat" catalog flow
+```
+
+The direct read verbs answer keyless (rate-limited, real answers); raw Cypher and the catalog
+flows unlock with a key.
+
 ## Deploy
 
 ```

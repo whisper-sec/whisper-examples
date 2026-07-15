@@ -1,0 +1,25 @@
+{
+  "url": "https://graph.whisper.security/api/query",
+  "method": "POST",
+  "body": {
+    "query": "CALL whisper.variants($v) YIELD variant, method, exists, confidence RETURN variant, method, exists, confidence ORDER BY confidence DESC",
+    "parameters": {
+      "v": "{{parameters.domain}}"
+    }
+  },
+  "headers": {
+    "content-type": "application/json",
+    "user-agent": "whisper-make/1.0 (+https://whisper.online)"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper variants recipe failed: {{ifempty(body.detail, ifempty(body.title, 'the security graph rejected the query'))}}"
+    },
+    "output": {
+      "domain": "{{parameters.domain}}",
+      "columns": "{{body.columns}}",
+      "rows": "{{body.rows}}",
+      "count": "{{length(body.rows)}}"
+    }
+  }
+}

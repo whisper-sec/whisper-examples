@@ -1,0 +1,9 @@
+[
+  {
+    "name": "cypher",
+    "type": "text",
+    "label": "Cypher query",
+    "help": "A read-only Cypher query, e.g. `CALL whisper.identify(['api.openai.com']) YIELD host, canonical_name, category, roles`. Use single quotes for Cypher string literals. Start with `CALL db.schema()` to see the graph model.",
+    "required": true
+  }
+]

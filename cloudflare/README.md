@@ -45,8 +45,23 @@ Proven end-to-end on a real `workers.dev` deploy: tier 1 verified a live agent k
 tier 2 fetched `https://v6.ident.me/` with `seen_ip` equal to the agent's `/128`
 (`matches_agent_address: true`, `X-Whisper-Egress-Source` stamped by the gateway).
 
+## Also here: query the security graph
+
+[`graph/`](./graph/) is a second Worker that queries the Whisper security graph (3.6B+ nodes of
+DNS / BGP / threat intelligence) with plain `fetch` - no SDK, no dependency:
+
+```
+GET /?host=<fqdn|ip>     -> keyless: threat posture (whisper.assess) + operator (whisper.identify)
+GET /?variants=<domain>  -> keyless: registered look-alike domains (whisper.variants)
+GET /?typosquat=<domain> -> keyed:   the "typosquat" catalog flow (set WHISPER_API_KEY)
+```
+
+The direct read verbs answer keyless (rate-limited, real answers); raw Cypher and the catalog
+flows unlock with a key. Deploy: `cd graph && wrangler deploy`.
+
 ## Also here: MCP tools for the Cloudflare Agents SDK
 
 [`agents-sdk/`](./agents-sdk/) ships the same two tiers as MCP tools on a Durable-Object
-`McpAgent` - `whisper_verify` / `whisper_rdap` (keyless) and `whisper_agents` /
-`whisper_egress_fetch` (keyed) - for any MCP client or another CF Agent.
+`McpAgent` - `whisper_verify` / `whisper_rdap` / `whisper_assess` (keyless) and `whisper_agents` /
+`whisper_egress_fetch` / `whisper_graph_query` / `whisper_graph_recipe` (keyed) - for any MCP
+client or another CF Agent.

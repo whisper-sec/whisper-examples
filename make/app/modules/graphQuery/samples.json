@@ -1,0 +1,12 @@
+{
+  "count": 1,
+  "columns": ["host", "canonical_name", "category", "roles"],
+  "rows": [
+    {
+      "host": "api.openai.com",
+      "canonical_name": "Cloudflare",
+      "category": "cdn",
+      "roles": ["ORIGIN_AS", "CDN"]
+    }
+  ]
+}

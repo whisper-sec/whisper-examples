@@ -44,6 +44,21 @@ Don't have an agent yet? `npx whisper-cli create` (or `whisper.agents({op:'regis
 control plane) provisions one and returns its `/128` + egress credential - or, from Python,
 `whisper_id.register("my-agent")` with `WHISPER_API_KEY` set.
 
+## Also here: query the security graph
+
+[`graph.py`](graph.py) queries the Whisper security graph (3.6B+ nodes of DNS / BGP / threat
+intelligence) from **pure stdlib** (`urllib`) - no pip package:
+
+```sh
+modal run graph.py --host theblackservicenetwork.com   # keyless: threat posture + operator
+modal run graph.py --variants paypal.com               # keyless: registered look-alikes
+WHISPER_API_KEY=whisper_live_... modal run graph.py --typosquat paypal.com   # keyed: catalog flow
+```
+
+The direct read verbs answer keyless (no key); raw Cypher and the catalog flows unlock with a
+key. `graph.py` sends a descriptive `User-Agent` - the stock `Python-urllib` UA is refused at the
+edge, so name your own client when you copy this.
+
 ## Worth knowing
 
 - **Two files by design.** `modal run` hydrates *every* function in an app - Secrets included -

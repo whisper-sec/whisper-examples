@@ -39,6 +39,21 @@ leaves from the agent's `/128`. On fetch-only sandboxes (Deno Deploy Classic) it
 the fetch-forward gateway automatically. The demo fetch tries an ordered chain of IP echoes so
 one flaky echo service never fails the demo.
 
+## Also here: query the security graph
+
+[`graph.ts`](graph.ts) queries the Whisper security graph (3.6B+ nodes of DNS / BGP / threat
+intelligence) with plain `fetch` - no dependency:
+
+```
+GET /?host=<fqdn|ip>     -> keyless: threat posture + operator identity
+GET /?variants=<domain>  -> keyless: registered look-alike domains
+GET /?typosquat=<domain> -> keyed:   the "typosquat" catalog flow (set WHISPER_API_KEY)
+```
+
+Run it: `deno run --allow-net --allow-env graph.ts`, then
+`curl 'localhost:8000/?host=theblackservicenetwork.com'`. The direct read verbs answer keyless;
+raw Cypher and the catalog flows unlock with a key.
+
 ## Run it
 
 Local: `deno run --allow-net --allow-env main.ts`, then

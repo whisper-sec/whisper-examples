@@ -1,0 +1,7 @@
+{
+  "name": "graphVariants",
+  "label": "Run a graph recipe (typosquat variants)",
+  "description": "Run the Whisper catalog recipe 'Typosquat Variant Generator' (whisper.variants): generate look-alike domain variants of a brand and see which are actually registered - bit-squats, homoglyphs, omissions, and more. A direct Cypher read, bound server-side as a $-parameter. Keyless - no API key needed. Catalog: github.com/whisper-sec/whisper-catalog.",
+  "typeId": 4,
+  "connection": null
+}

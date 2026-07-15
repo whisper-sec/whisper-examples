@@ -7,12 +7,17 @@ routable IPv6 identity and govern it from a Zap. Built with the Zapier Platform 
 
 | Tier | Needs | Steps |
 |------|-------|-------|
-| 1 - keyless | nothing (leave the key blank) | **Verify Agent Identity**, **RDAP Lookup**, **Get Egress IP** |
-| 2 - control plane | your `whisper_live_…` API key | **New Agent** (trigger), **Register Agent**, **Find Agents**, **Set DNS Policy**, **Get Agent Logs**, **Get Egress Config**, **Revoke Agent** |
+| 1 - keyless | nothing (leave the key blank) | **Verify Agent Identity**, **RDAP Lookup**, **Get Egress IP**, **Assess Host** (security graph), **Find Look-alike Domains** (typosquat recipe) |
+| 2 - control plane | your `whisper_live_…` API key | **New Agent** (trigger), **Register Agent**, **Find Agents**, **Set DNS Policy**, **Get Agent Logs**, **Get Egress Config**, **Revoke Agent**, **Run Cypher Query** (raw graph read) |
 
 A Zap can mint a real agent - `Register Agent` returns its routable `/128`, FQDN, reverse
 DNS, and the agent's own API key (once) - then any keyless step (or anyone on the internet)
 can verify that identity: DANE + JWS evidence via `Verify Agent Identity`.
+
+**Security graph, too.** `Assess Host` and `Find Look-alike Domains` query the Whisper security
+graph (3.6B+ nodes of DNS / BGP / threat intelligence) **keyless** - label a host malicious/benign,
+name its operator, or enumerate registered typosquats of a brand, with no API key. `Run Cypher
+Query` is the keyed escape hatch for any read the named recipes do not cover.
 
 ## Use it
 

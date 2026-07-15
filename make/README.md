@@ -5,8 +5,8 @@ surface in your scenarios - **two tiers in one app**, per the Robustness Princip
 
 | Tier | Needs | Modules |
 |------|-------|---------|
-| 1 - keyless | nothing | Verify agent identity · Lookup RDAP record · Get transparency log · Get inbound lookups · Get my egress IP |
-| 2 - keyed | a `whisper_live_…` API key (one Make connection) | Register Agent · List · Set Policy · Get Logs · Get connection (egress) details · Revoke |
+| 1 - keyless | nothing | Verify agent identity · Lookup RDAP record · Get transparency log · Get inbound lookups · Get my egress IP · Query security graph (threat posture) · Run a graph recipe (typosquat variants) |
+| 2 - keyed | a `whisper_live_…` API key (one Make connection) | Register Agent · List · Set Policy · Get Logs · Get connection (egress) details · Revoke · Run raw Cypher on the security graph |
 
 Every Whisper agent gets a real, routable **IPv6 `/128`** from `2a04:2a01::/32`
 (AS219419), anchored in DNS - reverse PTR, forward-confirming AAAA, DNSSEC-signed
@@ -14,6 +14,12 @@ DANE-TLSA, and a signed identity document. The keyless tier lets *anyone* check 
 address (`is_whisper_agent`, RDAP, tamper-evident transparency log). The keyed tier is
 the control plane: mint agents (each with its own `/128` and key), set DNS policy, read
 logs, revoke.
+
+**The security graph, too.** *Query security graph* and *Run a graph recipe* hit the Whisper
+security graph (3.6B+ nodes of DNS / BGP / threat intelligence) **keyless** - a labelled threat
+posture for any host, or the registered typosquats of a brand, with no API key. *Run raw Cypher*
+is the keyed escape hatch for any read the named recipes do not cover
+([catalog](https://github.com/whisper-sec/whisper-catalog)).
 
 ## Use it
 
@@ -27,9 +33,9 @@ source into your own Make account:
 MAKE_API_TOKEN=<your Make token> ./push.sh <your-app-name> [zone] [version]
 ```
 
-`push.sh` PUTs `app/base.json`, the connection, the in-product `app/readme.md`, and all
-eleven modules idempotently - the app is live to your organization as soon as the
-sections are saved.
+`push.sh` PUTs `app/base.json`, the connection, the in-product `app/readme.md`, and every
+module under `app/modules/` idempotently - the app is live to your organization as soon as
+the sections are saved.
 
 ## Layout
 

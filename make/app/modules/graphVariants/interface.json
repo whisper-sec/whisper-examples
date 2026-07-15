@@ -1,0 +1,32 @@
+[
+  {
+    "name": "domain",
+    "type": "text",
+    "label": "Domain"
+  },
+  {
+    "name": "count",
+    "type": "number",
+    "label": "Row count"
+  },
+  {
+    "name": "columns",
+    "type": "array",
+    "label": "Columns",
+    "spec": { "type": "text" }
+  },
+  {
+    "name": "rows",
+    "type": "array",
+    "label": "Variants",
+    "spec": {
+      "type": "collection",
+      "spec": [
+        { "name": "variant", "type": "text", "label": "Variant domain" },
+        { "name": "method", "type": "text", "label": "Method" },
+        { "name": "exists", "type": "boolean", "label": "Registered" },
+        { "name": "confidence", "type": "number", "label": "Confidence" }
+      ]
+    }
+  }
+]

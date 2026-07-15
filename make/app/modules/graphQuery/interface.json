@@ -1,0 +1,19 @@
+[
+  {
+    "name": "count",
+    "type": "number",
+    "label": "Row count"
+  },
+  {
+    "name": "columns",
+    "type": "array",
+    "label": "Columns",
+    "spec": { "type": "text" }
+  },
+  {
+    "name": "rows",
+    "type": "array",
+    "label": "Rows",
+    "spec": { "type": "any" }
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "host": "theblackservicenetwork.com",
+  "count": 1,
+  "columns": ["host", "label", "band", "coverage", "evidence"],
+  "rows": [
+    {
+      "host": "theblackservicenetwork.com",
+      "label": "malicious",
+      "band": "CRITICAL",
+      "coverage": "malicious-evidenced",
+      "evidence": ["coverage:malicious-evidenced", "band:CRITICAL", "feed-source:listed", "feed-source-count:4"]
+    }
+  ]
+}

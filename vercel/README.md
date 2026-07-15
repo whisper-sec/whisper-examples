@@ -27,11 +27,27 @@ auto-selects the fetch-forward gateway instead - same code, no config either way
 
 Set `WHISPER_API_KEY` in the project's environment variables before deploying (`vercel env add`).
 
-## AI SDK tool
+## Query the security graph
 
-`whisper-tool.js` exports `whisperVerifyTool` (keyless) and `whisperEgressTool` (keyed) for the
-[Vercel AI SDK](https://sdk.vercel.ai)'s `tool()` - an LLM can verify an agent identity or ask for
-a fetch to leave from the agent's `/128` without ever seeing the API key.
+[`api/graph.js`](api/graph.js) queries the Whisper security graph (3.6B+ nodes of DNS / BGP /
+threat intelligence) with plain `fetch` - no dependency:
+
+```
+GET /api/graph?host=<fqdn|ip>     -> keyless: threat posture + operator identity
+GET /api/graph?variants=<domain>  -> keyless: registered look-alike domains
+GET /api/graph?typosquat=<domain> -> keyed:   the "typosquat" catalog flow (set WHISPER_API_KEY)
+```
+
+The direct read verbs answer keyless (rate-limited, real answers); raw Cypher and the catalog
+flows unlock with a key.
+
+## AI SDK tools
+
+`whisper-tool.js` exports `whisperVerifyTool` and `whisperAssessTool` (keyless), plus
+`whisperGraphQueryTool` and `whisperEgressTool` (keyed) for the
+[Vercel AI SDK](https://sdk.vercel.ai)'s `tool()` - an LLM can verify an agent identity, assess a
+host against the security graph, run raw Cypher, or ask for a fetch to leave from the agent's
+`/128`, all without ever seeing the API key.
 
 ## Deploy
 

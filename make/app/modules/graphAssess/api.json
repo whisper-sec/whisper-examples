@@ -1,0 +1,25 @@
+{
+  "url": "https://graph.whisper.security/api/query",
+  "method": "POST",
+  "body": {
+    "query": "CALL whisper.assess($v) YIELD host, label, band, coverage, evidence RETURN host, label, band, coverage, evidence",
+    "parameters": {
+      "v": ["{{parameters.host}}"]
+    }
+  },
+  "headers": {
+    "content-type": "application/json",
+    "user-agent": "whisper-make/1.0 (+https://whisper.online)"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper graph query failed: {{ifempty(body.detail, ifempty(body.title, 'the security graph rejected the query'))}}"
+    },
+    "output": {
+      "host": "{{parameters.host}}",
+      "columns": "{{body.columns}}",
+      "rows": "{{body.rows}}",
+      "count": "{{length(body.rows)}}"
+    }
+  }
+}

@@ -86,3 +86,18 @@ from inside the same function.
 `handler.mjs` is the same two-tier recipe on the npm
 [`whisper-edge`](https://www.npmjs.com/package/whisper-edge) SDK - `npm i whisper-edge`,
 zip with `node_modules`, Node 18+ runtime, set `WHISPER_API_KEY` for the egress tier.
+
+## Also here: query the security graph
+
+[`graph.mjs`](graph.mjs) is a **zero-dependency** Node handler (no layer, no bundling) that
+queries the Whisper security graph (3.6B+ nodes of DNS / BGP / threat intelligence):
+
+```
+?host=<fqdn|ip>     -> keyless: threat posture + operator identity
+?variants=<domain>  -> keyless: registered look-alike domains
+?typosquat=<domain> -> keyed:   the "typosquat" catalog flow (set WHISPER_API_KEY)
+```
+
+The direct read verbs answer keyless (no credentials); raw Cypher and the catalog flows unlock
+with a key. Deploy it exactly like `handler.mjs` but with `--handler graph.handler` on a
+`nodejs18.x`+ runtime - no layer needed.

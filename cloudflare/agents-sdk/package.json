@@ -3,7 +3,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
     "agents": "^0.17.3",
-    "whisper-edge": "^0.3.1",
+    "whisper-edge": "^0.5.1",
     "zod": "^4.0.0"
   }
 }

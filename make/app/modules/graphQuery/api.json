@@ -1,0 +1,25 @@
+{
+  "log": {
+    "sanitize": ["request.headers.x-api-key"]
+  },
+  "url": "https://graph.whisper.security/api/query",
+  "method": "POST",
+  "body": {
+    "query": "{{parameters.cypher}}"
+  },
+  "headers": {
+    "x-api-key": "{{connection.apiKey}}",
+    "content-type": "application/json",
+    "user-agent": "whisper-make/1.0 (+https://whisper.online)"
+  },
+  "response": {
+    "error": {
+      "message": "[{{statusCode}}] Whisper graph query failed: {{ifempty(body.detail, ifempty(body.title, 'the security graph rejected the query - check the Cypher and your API key'))}}"
+    },
+    "output": {
+      "columns": "{{body.columns}}",
+      "rows": "{{body.rows}}",
+      "count": "{{length(body.rows)}}"
+    }
+  }
+}

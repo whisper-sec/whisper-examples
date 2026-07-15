@@ -26,6 +26,20 @@ on Deno, so `agentEgress` opens a `Deno.connect` CONNECT tunnel; the transport i
 
 Set the secret before deploying: `supabase secrets set WHISPER_API_KEY=whisper_live_...`.
 
+## Also here: query the security graph
+
+[`functions/graph/`](functions/graph/) queries the Whisper security graph (3.6B+ nodes of DNS /
+BGP / threat intelligence) with plain `fetch` - no dependency:
+
+```
+GET /functions/v1/graph?host=<fqdn|ip>     -> keyless: threat posture + operator identity
+GET /functions/v1/graph?variants=<domain>  -> keyless: registered look-alike domains
+GET /functions/v1/graph?typosquat=<domain> -> keyed:   the "typosquat" catalog flow
+```
+
+The direct read verbs answer keyless (rate-limited, real answers); raw Cypher and the catalog
+flows unlock with a key. Deploy: `supabase functions deploy graph --no-verify-jwt`.
+
 ## Deploy
 
 ```

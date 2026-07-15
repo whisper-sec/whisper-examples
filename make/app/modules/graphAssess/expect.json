@@ -1,0 +1,9 @@
+[
+  {
+    "name": "host",
+    "type": "text",
+    "label": "Host or IP",
+    "help": "The hostname or IP to assess, e.g. `theblackservicenetwork.com`, `api.openai.com`, or `8.8.8.8`. Bound server-side as a Cypher $-parameter.",
+    "required": true
+  }
+]

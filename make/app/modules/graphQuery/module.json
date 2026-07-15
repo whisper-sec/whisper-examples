@@ -1,0 +1,7 @@
+{
+  "name": "graphQuery",
+  "label": "Run raw Cypher on the security graph",
+  "description": "Run an arbitrary read-only Cypher query against the Whisper security graph (3.6B+ nodes: HOSTNAME, IPV4/IPV6, ORGANIZATION, ASN; relationships like RESOLVES_TO, NAMESERVER_FOR, LINKS_TO). The escape hatch for any query the named recipes do not cover - `CALL db.schema()` describes the graph. Returns the {columns, rows} envelope. Keyed: needs your whisper_live_ API key connection.",
+  "typeId": 4,
+  "connection": "whisper-jijvrd"
+}
