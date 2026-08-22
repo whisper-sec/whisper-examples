@@ -8,7 +8,7 @@ const includeApiKey = (request, z, bundle) => {
     bundle.authData &&
     bundle.authData.api_key &&
     request.url &&
-    request.url.startsWith('https://graph.whisper.security/')
+    request.url.startsWith('https://graph.whisper.online/')
   ) {
     request.headers = request.headers || {};
     request.headers['X-API-Key'] = bundle.authData.api_key;

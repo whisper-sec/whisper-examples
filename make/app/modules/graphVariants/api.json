@@ -1,5 +1,5 @@
 {
-  "url": "https://graph.whisper.security/api/query",
+  "url": "https://graph.whisper.online/api/query",
   "method": "POST",
   "body": {
     "query": "CALL whisper.variants($v) YIELD variant, method, exists, confidence RETURN variant, method, exists, confidence ORDER BY confidence DESC",

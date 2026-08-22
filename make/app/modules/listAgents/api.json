@@ -4,7 +4,7 @@
       "request.headers.x-api-key"
     ]
   },
-  "url": "https://graph.whisper.security/api/query",
+  "url": "https://graph.whisper.online/api/query",
   "body": {
     "query": "CALL whisper.agents({op:'list', args:{kind:'{{parameters.kind}}'}})"
   },

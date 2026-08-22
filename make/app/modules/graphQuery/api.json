@@ -2,7 +2,7 @@
   "log": {
     "sanitize": ["request.headers.x-api-key"]
   },
-  "url": "https://graph.whisper.security/api/query",
+  "url": "https://graph.whisper.online/api/query",
   "method": "POST",
   "body": {
     "query": "{{parameters.cypher}}"

@@ -5,7 +5,7 @@
       "response.body"
     ]
   },
-  "url": "https://graph.whisper.security/api/query",
+  "url": "https://graph.whisper.online/api/query",
   "body": {
     "query": "CALL whisper.agents({op:'register', args:{label:'{{replace(parameters.label, \"'\", \"''\")}}'{{if(length(parameters.contact_email) > 0, \",contact_email:'\" + replace(parameters.contact_email, \"'\", \"''\") + \"'\", \"\")}}}})"
   },

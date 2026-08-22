@@ -5,7 +5,7 @@
       "response.body"
     ]
   },
-  "url": "https://graph.whisper.security/api/query",
+  "url": "https://graph.whisper.online/api/query",
   "body": {
     "query": "CALL whisper.agents({op:'connect', args:{tier:'socks5'{{if(length(parameters.agent) > 0, \",agent:'\" + replace(parameters.agent, \"'\", \"''\") + \"'\", \"\")}}}})"
   },

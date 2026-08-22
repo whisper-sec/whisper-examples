@@ -11,7 +11,7 @@
 import { z } from "zod";
 import { verify, verifyDetails, rdap, control, agentEgress, graph } from "whisper-edge";
 
-const GRAPH_URL = "https://graph.whisper.security/api/query";
+const GRAPH_URL = "https://graph.whisper.online/api/query";
 
 const text = (obj) => ({ content: [{ type: "text", text: JSON.stringify(obj, null, 2) }] });
 const NO_KEY = text({

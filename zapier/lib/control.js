@@ -4,7 +4,7 @@
 // user's X-API-Key header (injected by middleware.js). Matches the reference `whisper` CLI.
 'use strict';
 
-const CONTROL_URL = 'https://graph.whisper.security/api/query';
+const CONTROL_URL = 'https://graph.whisper.online/api/query';
 
 // Conservative-emit: render a JS value as a Cypher literal. Strings are single-quoted with
 // `'` and `\` doubled (can never break out); map keys are sorted so output is byte-stable.

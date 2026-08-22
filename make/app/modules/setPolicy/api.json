@@ -4,7 +4,7 @@
       "request.headers.x-api-key"
     ]
   },
-  "url": "https://graph.whisper.security/api/query",
+  "url": "https://graph.whisper.online/api/query",
   "body": {
     "query": "CALL whisper.agents({op:'policy', args:{allow:[{{if(length(parameters.allow) > 0, \"'\" + join(parameters.allow, \"','\") + \"'\", \"\")}}],block:[{{if(length(parameters.block) > 0, \"'\" + join(parameters.block, \"','\") + \"'\", \"\")}}],bundles:[{{if(length(parameters.bundles) > 0, \"'\" + join(parameters.bundles, \"','\") + \"'\", \"\")}}],default:'{{parameters.default}}'}})"
   },

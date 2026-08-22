@@ -1,5 +1,5 @@
 {
-  "url": "https://graph.whisper.security/api/query",
+  "url": "https://graph.whisper.online/api/query",
   "method": "POST",
   "body": {
     "query": "CALL whisper.assess($v) YIELD host, label, band, coverage, evidence RETURN host, label, band, coverage, evidence",
