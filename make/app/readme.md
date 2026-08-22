@@ -9,7 +9,7 @@ This app is **two tiers in one**:
 - **Keyless** - no account, credentials, or API key. Read the public identity surface at
   `https://rdap.whisper.online`.
 - **Keyed** - add a Whisper **API key** connection to unlock the control plane at
-  `https://graph.whisper.security`: create, govern, and revoke your own agents.
+  `https://graph.whisper.online`: create, govern, and revoke your own agents.
 
 ## Keyless modules (no connection)
 

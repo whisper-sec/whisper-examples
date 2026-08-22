@@ -6,7 +6,7 @@
 //   import { whisperVerifyTool, whisperAssessTool, whisperGraphQueryTool, whisperEgressTool } from "./whisper-tool.js";
 import { verify, verifyDetails, agentEgress, graph } from "whisper-edge";
 
-const GRAPH_URL = "https://graph.whisper.security/api/query";
+const GRAPH_URL = "https://graph.whisper.online/api/query";
 
 // One parameterised Cypher read via plain fetch. Keyless works (rate-limited); a key lifts it.
 async function graphRead(query, parameters, apiKey) {

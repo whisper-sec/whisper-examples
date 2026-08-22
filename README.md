@@ -63,7 +63,7 @@ recipes unlock with an API key.
 
 ```js
 // Keyless: threat posture for a host. Runs in any runtime - no key, no SDK.
-const res = await fetch("https://graph.whisper.security/api/query", {
+const res = await fetch("https://graph.whisper.online/api/query", {
   method: "POST",
   headers: { "content-type": "application/json", "user-agent": "my-app/1.0" },
   body: JSON.stringify({
@@ -77,7 +77,7 @@ const { columns, rows } = await res.json();   // rows are objects keyed by colum
 
 ```sh
 # The same call, keyless, from a shell:
-curl -s https://graph.whisper.security/api/query \
+curl -s https://graph.whisper.online/api/query \
   -H 'content-type: application/json' \
   -d '{"query":"CALL whisper.identify($v) YIELD host, canonical_name, category, roles","parameters":{"v":["api.openai.com"]}}'
 ```

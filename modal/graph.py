@@ -16,7 +16,7 @@ import os
 
 import modal
 
-GRAPH = "https://graph.whisper.security/api/query"
+GRAPH = "https://graph.whisper.online/api/query"
 FLOW_RUN = "https://console.whisper.security/api/gallery/run"
 
 app = modal.App("whisper-graph", image=modal.Image.debian_slim())

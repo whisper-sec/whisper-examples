@@ -12,7 +12,7 @@
 //
 // Docs: https://www.whisper.security/docs  ·  catalog: https://github.com/whisper-sec/whisper-catalog
 
-const GRAPH = "https://graph.whisper.security/api/query";
+const GRAPH = "https://graph.whisper.online/api/query";
 const FLOW_RUN = "https://console.whisper.security/api/gallery/run";
 // A descriptive User-Agent: the edge blocks anonymous/scripting UAs, so name every request.
 const UA = "whisper-examples/1.0 (+https://whisper.online)";

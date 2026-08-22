@@ -43,7 +43,7 @@ e.g. `api_key=whisper_live_…` - never commit it).
   with the `whisper` CLI or the [`whisper-edge`](https://www.npmjs.com/package/whisper-edge)
   SDK on a host you control.
 - **Wire format.** Control calls are `CALL whisper.agents({op, args})` POSTed to
-  `https://graph.whisper.security/api/query` with the key in `X-API-Key` - args rendered as
+  `https://graph.whisper.online/api/query` with the key in `X-API-Key` - args rendered as
   a deterministic Cypher literal (sorted keys, quote-doubling), both response envelope
   shapes accepted. Keyless calls are plain GETs against `https://rdap.whisper.online`.
 - Prefer raw HTTP? The keyless surface is also published as an

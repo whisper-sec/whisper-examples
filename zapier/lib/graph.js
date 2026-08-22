@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 // The Whisper security graph - 3.6B+ nodes of DNS/BGP/threat intelligence, queryable over
-// one POST to https://graph.whisper.security/api/query. Two tiers, per Postel's Law:
+// one POST to https://graph.whisper.online/api/query. Two tiers, per Postel's Law:
 //   keyless - the direct read verbs (whisper.assess / identify / variants / walk / ...) answer
 //             with NO key: rate-limited (~100/window), real production-shaped answers.
 //   keyed   - raw Cypher and the multi-step flows need the X-API-Key (injected by middleware).
 // A key on ANY call lifts the keyless rate limit. Rows come back as objects keyed by column.
 'use strict';
 
-const GRAPH_URL = 'https://graph.whisper.security/api/query';
+const GRAPH_URL = 'https://graph.whisper.online/api/query';
 
 // Surface a problem+json error helpfully: detail > title > type.
 const problemMessage = (data, status) => {
