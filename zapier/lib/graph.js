@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// The Whisper security graph - 3.6B+ nodes of DNS/BGP/threat intelligence, queryable over
+// The Whisper security graph - 6.9B+ nodes of DNS/BGP/threat intelligence, queryable over
 // one POST to https://graph.whisper.online/api/query. Two tiers, per Postel's Law:
 //   keyless - the direct read verbs (whisper.assess / identify / variants / walk / ...) answer
 //             with NO key: rate-limited (~100/window), real production-shaped answers.

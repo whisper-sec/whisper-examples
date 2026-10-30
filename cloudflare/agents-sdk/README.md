@@ -10,7 +10,7 @@ that gives any MCP client - or any other CF Agent via `this.mcp.connect(url)` - 
 | `whisper_assess` | keyless | security-graph threat posture (`whisper.assess`) + operator (`whisper.identify`) for a host/IP |
 | `whisper_agents` | keyed | control plane: register / identity / list / policy / logs / connect / revoke (a revoke that matches nothing returns `isError` with `status: not_found`) |
 | `whisper_egress_fetch` | keyed | fetch a URL so it leaves from the agent's routable /128, not Cloudflare's IP |
-| `whisper_graph_query` | keyed | run raw read-only Cypher against the security graph (3.6B+ nodes) |
+| `whisper_graph_query` | keyed | run raw read-only Cypher against the security graph (6.9B+ nodes) |
 | `whisper_graph_recipe` | keyed | run a named catalog recipe (typosquat, attack-surface, ...) |
 
 `whisper_assess`, `whisper_graph_query`, and `whisper_graph_recipe` put the whole Whisper security

@@ -54,7 +54,7 @@ address becomes your agent's routable `/128`.
 
 ## Query the security graph
 
-The same two-tier idea, for **intelligence**. The Whisper security graph is 3.6B+ nodes of
+The same two-tier idea, for **intelligence**. The Whisper security graph is 6.9B+ nodes of
 DNS / BGP / threat intelligence (`HOSTNAME`, `IPV4`/`IPV6`, `ORGANIZATION`, `ASN`; relationships
 like `RESOLVES_TO`, `NAMESERVER_FOR`, `LINKS_TO`). The **direct read verbs** answer **keyless** -
 no key, no account, one HTTPS POST - so an edge function can label a host, name its operator, or

@@ -90,7 +90,7 @@ zip with `node_modules`, Node 18+ runtime, set `WHISPER_API_KEY` for the egress 
 ## Also here: query the security graph
 
 [`graph.mjs`](graph.mjs) is a **zero-dependency** Node handler (no layer, no bundling) that
-queries the Whisper security graph (3.6B+ nodes of DNS / BGP / threat intelligence):
+queries the Whisper security graph (6.9B+ nodes of DNS / BGP / threat intelligence):
 
 ```
 ?host=<fqdn|ip>     -> keyless: threat posture + operator identity

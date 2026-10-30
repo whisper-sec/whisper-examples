@@ -46,7 +46,7 @@ control plane) provisions one and returns its `/128` + egress credential - or, f
 
 ## Also here: query the security graph
 
-[`graph.py`](graph.py) queries the Whisper security graph (3.6B+ nodes of DNS / BGP / threat
+[`graph.py`](graph.py) queries the Whisper security graph (6.9B+ nodes of DNS / BGP / threat
 intelligence) from **pure stdlib** (`urllib`) - no pip package:
 
 ```sh

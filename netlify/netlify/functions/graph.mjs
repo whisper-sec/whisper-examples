@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// The Whisper security graph on Netlify Functions (Node, Web API) - 3.6B+ nodes of
+// The Whisper security graph on Netlify Functions (Node, Web API) - 6.9B+ nodes of
 // DNS/BGP/threat intelligence, queryable with plain fetch. No dependencies.
 // Deploy: `netlify deploy`
 //

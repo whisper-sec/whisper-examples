@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // The Whisper security graph on AWS Lambda (Node, Function URL or API Gateway) -
-// 3.6B+ nodes of DNS/BGP/threat intelligence, queryable with plain fetch. ZERO
+// 6.9B+ nodes of DNS/BGP/threat intelligence, queryable with plain fetch. ZERO
 // dependencies: no layer, no bundling, just this file (Node 18+ runtimes).
 //
 // Tier 1 (keyless): ?host=<fqdn or IP>     - threat posture + vendor identity

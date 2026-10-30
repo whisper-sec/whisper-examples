@@ -106,7 +106,7 @@ export function registerWhisperTools(server, env = {}) {
 
   server.tool(
     "whisper_assess",
-    "Threat posture + vendor identity for hostnames/IPs from the Whisper security graph (3.6B+ nodes of DNS/BGP/threat intelligence): whisper.assess (malicious/benign label + severity band + evidence) and whisper.identify (who operates it). Keyless - no API key needed; the key, when set, lifts the rate limit.",
+    "Threat posture + vendor identity for hostnames/IPs from the Whisper security graph (6.9B+ nodes of DNS/BGP/threat intelligence): whisper.assess (malicious/benign label + severity band + evidence) and whisper.identify (who operates it). Keyless - no API key needed; the key, when set, lifts the rate limit.",
     { hosts: z.array(z.string()).min(1).describe("hostnames or IPs to assess, e.g. ['api.openai.com','8.8.8.8']") },
     async ({ hosts }) => {
       // Sequential, not parallel: the keyless tier allows only ONE concurrent query, so two
@@ -119,7 +119,7 @@ export function registerWhisperTools(server, env = {}) {
 
   server.tool(
     "whisper_graph_query",
-    "Run a raw read-only Cypher query against the Whisper security graph (3.6B+ nodes: HOSTNAME, IPV4/IPV6, ORGANIZATION, ASN; relationships like RESOLVES_TO, NAMESERVER_FOR, LINKS_TO). Values go in `params` and are bound server-side as $-parameters. `CALL db.schema()` describes the graph. Needs the WHISPER_API_KEY secret.",
+    "Run a raw read-only Cypher query against the Whisper security graph (6.9B+ nodes: HOSTNAME, IPV4/IPV6, ORGANIZATION, ASN; relationships like RESOLVES_TO, NAMESERVER_FOR, LINKS_TO). Values go in `params` and are bound server-side as $-parameters. `CALL db.schema()` describes the graph. Needs the WHISPER_API_KEY secret.",
     {
       cypher: z.string().describe("the Cypher read, e.g. \"CALL whisper.walk($seed) YIELD ...\" or a MATCH"),
       params: z.record(z.unknown()).optional().describe("$-parameters referenced by the query"),

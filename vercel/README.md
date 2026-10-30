@@ -29,7 +29,7 @@ Set `WHISPER_API_KEY` in the project's environment variables before deploying (`
 
 ## Query the security graph
 
-[`api/graph.js`](api/graph.js) queries the Whisper security graph (3.6B+ nodes of DNS / BGP /
+[`api/graph.js`](api/graph.js) queries the Whisper security graph (6.9B+ nodes of DNS / BGP /
 threat intelligence) with plain `fetch` - no dependency:
 
 ```

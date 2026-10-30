@@ -15,7 +15,7 @@ DNS, and the agent's own API key (once) - then any keyless step (or anyone on th
 can verify that identity: DANE + JWS evidence via `Verify Agent Identity`.
 
 **Security graph, too.** `Assess Host` and `Find Look-alike Domains` query the Whisper security
-graph (3.6B+ nodes of DNS / BGP / threat intelligence) **keyless** - label a host malicious/benign,
+graph (6.9B+ nodes of DNS / BGP / threat intelligence) **keyless** - label a host malicious/benign,
 name its operator, or enumerate registered typosquats of a brand, with no API key. `Run Cypher
 Query` is the keyed escape hatch for any read the named recipes do not cover.
 

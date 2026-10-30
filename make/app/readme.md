@@ -28,7 +28,7 @@ This app is **two tiers in one**:
   agent-sourced egress happens where you run the agent, not inside Make.
 - **Query security graph (threat posture)** - a labelled threat posture (malicious / benign /
   unknown, with a severity band and evidence) plus the vendor/operator behind any hostname or IP,
-  from the Whisper security graph (3.6B+ nodes of DNS / BGP / threat intelligence). A direct
+  from the Whisper security graph (6.9B+ nodes of DNS / BGP / threat intelligence). A direct
   Cypher read (`whisper.assess`), the value bound server-side as a `$`-parameter.
 - **Run a graph recipe (typosquat variants)** - the "Typosquat Variant Generator" recipe
   (`whisper.variants`): generate look-alike variants of a brand domain (bit-squats, homoglyphs,

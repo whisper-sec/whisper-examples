@@ -36,7 +36,7 @@ export const whisperVerifyTool = {
 
 export const whisperAssessTool = {
   description:
-    "Assess hosts/IPs against the Whisper security graph (3.6B+ nodes of DNS/BGP/threat intelligence): " +
+    "Assess hosts/IPs against the Whisper security graph (6.9B+ nodes of DNS/BGP/threat intelligence): " +
     "whisper.assess (malicious/benign label + severity band + evidence) and whisper.identify (operator/vendor). Keyless.",
   parameters: {
     type: "object",
