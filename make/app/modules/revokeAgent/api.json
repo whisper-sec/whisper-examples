@@ -14,8 +14,9 @@
     "content-type": "application/json"
   },
   "response": {
+    "valid": "{{statusCode < 400 && ifempty(body.ok, get(get(body.rows, 1), 'ok')) !== false && get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 2) !== 'not_found'}}",
     "error": {
-      "message": "[{{statusCode}}] Whisper revoke failed: {{ifempty(body.detail, ifempty(body.title, 'the Whisper control plane rejected the request - check your API key and its scope'))}}"
+      "message": "[{{ifempty(get(ifempty(body.error, get(get(body.rows, 1), 'error')), 'code'), if(get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 2) === 'not_found', 'NOT_FOUND', ifempty(get(get(body.rows, 1), 'status'), statusCode)))}}] Whisper revoke: {{ifempty(get(ifempty(body.error, get(get(body.rows, 1), 'error')), 'message'), ifempty(body.detail, ifempty(body.title, if(get(get(get(ifempty(body.result, get(get(body.rows, 1), 'result')), 'rows'), 1), 2) === 'not_found', 'nothing was revoked: no agent of yours matches ' + parameters.agent + '. If you revoked it before, there is nothing left to revoke', 'the Whisper control plane rejected the request - check your API key and its scope'))))}}"
     },
     "output": {
       "ok": "{{ifempty(body.ok, get(get(body.rows, 1), 'ok'))}}",

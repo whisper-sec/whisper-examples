@@ -85,4 +85,9 @@ revokeAgent    → status: revoked
 dig -x (after) → NXDOMAIN on both authoritatives; RDAP 404; verify false
 ```
 
+Revoking an agent that is already revoked, or not yours, fails the Revoke module with
+`[NOT_FOUND] Whisper revoke: nothing was revoked: ...`, the control plane's own message; a retry
+will not change it. `node --test make/test/*.test.mjs` checks the module's response handling
+offline against real wire bodies.
+
 MIT licensed.

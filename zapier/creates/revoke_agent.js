@@ -1,38 +1,38 @@
 // SPDX-License-Identifier: MIT
 // KEYED create: fully revoke an agent (irreversible - identity, DNS, RDAP, key all torn
-// down) - whisper.agents({op:'revoke'}). Liberal-accept: takes an agent ID or a /128;
-// if the control plane can't match the /128 directly, it is resolved to its agent ID
-// via op:agent and the revoke is retried - the user never has to care which form they had.
+// down) - whisper.agents({op:'revoke'}). The control plane matches every spelling of an
+// agent itself: its id (with or without the agent- prefix), its /128 or its label.
+//
+// A revoke that matches nothing means nothing was revoked: the agent was revoked already,
+// or it is not in your account. Current planes answer that with error.code NOT_FOUND
+// (callControl throws NotFoundError for it); older planes answered an ok row with status
+// not_found. Both halt the step with the same NotFoundError and the server's message, and
+// neither is worth a retry.
 'use strict';
 
 const { callControl } = require('../lib/control');
 
-const revokeOnce = async (z, bundle, agent) => {
-  const { records } = await callControl(z, bundle, 'revoke', { agent });
-  return records[0] || {};
+const rowNotFound = (rec) => {
+  const row = rec && typeof rec.item === 'object' && rec.item ? rec.item : rec || {};
+  return (row.status || row.state) === 'not_found' ? row : null;
 };
 
 const perform = async (z, bundle) => {
   const ref = (bundle.inputData.agent || '').trim();
-  let r = await revokeOnce(z, bundle, ref);
-  let status = r.status || r.state;
-  if (status === 'not_found' && ref.includes(':')) {
-    // A /128 the revoke op didn't match - resolve it to the agent ID and retry.
-    const { records } = await callControl(z, bundle, 'agent', { address: ref });
-    const detail = records[0] || {};
-    if (detail.agent) {
-      r = await revokeOnce(z, bundle, detail.agent);
-      status = r.status || r.state;
-    }
-  }
-  if (status === 'not_found') {
+  const { records } = await callControl(z, bundle, 'revoke', { agent: ref });
+  const r = records[0] || {};
+  const missing = rowNotFound(r);
+  if (missing) {
     throw new z.errors.Error(
-      `No agent matches "${ref}" in your tenant - check the agent ID (agent-…) or its IPv6 /128.`,
+      missing.message ||
+        missing.detail ||
+        `Nothing was revoked: no agent of yours matches "${ref}". If you revoked it before, ` +
+          'there is nothing left to revoke.',
       'NotFoundError',
       404,
     );
   }
-  return { id: ref, ...r, agent: r.agent || ref, status: status || 'revoked' };
+  return { id: ref, ...r, agent: r.agent || ref, status: r.status || r.state || 'revoked' };
 };
 
 module.exports = {
@@ -51,7 +51,8 @@ module.exports = {
         label: 'Agent',
         type: 'string',
         required: true,
-        helpText: 'The agent ID (`agt_…`) or its IPv6 /128 address.',
+        helpText:
+          'The agent ID (`agent-a…` or `a…`), its IPv6 /128 address, or its label. Revoking an agent that is already revoked, or not yours, stops the step with "Nothing was revoked".',
       },
     ],
     sample: { id: 'agt_0000000000000001', agent: 'agt_0000000000000001', status: 'revoked' },

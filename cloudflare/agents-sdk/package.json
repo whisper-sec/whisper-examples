@@ -1,9 +1,12 @@
 {
   "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
     "agents": "^0.17.3",
-    "whisper-edge": "^0.5.1",
+    "whisper-edge": "^0.6.2",
     "zod": "^4.0.0"
   }
 }

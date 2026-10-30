@@ -14,9 +14,28 @@ import { verify, verifyDetails, rdap, control, agentEgress, graph } from "whispe
 const GRAPH_URL = "https://graph.whisper.online/api/query";
 
 const text = (obj) => ({ content: [{ type: "text", text: JSON.stringify(obj, null, 2) }] });
+const failure = (obj) => ({ ...text(obj), isError: true });
 const NO_KEY = text({
   error: "WHISPER_API_KEY is not set - this tool needs a key. Keyless tools (whisper_verify, whisper_rdap, whisper_assess) still work.",
 });
+
+const NOTHING_REVOKED =
+  "nothing was revoked: no agent of yours matches. If you revoked it before, there is nothing left to revoke";
+
+/** A revoke that matched nothing, in either shape the control plane has used: the NOT_FOUND
+ *  error of current planes (whisper-edge >= 0.6.2 rejects with a NotFoundError carrying that
+ *  code), or the ok row with status not_found that older planes answered. Keyed on the code
+ *  and the status, never on a bare 404. Returns the tool error, or null when it is not one. */
+export function nothingRevoked({ error, records } = {}) {
+  if (error) {
+    if (error.code !== "NOT_FOUND") return null;
+    return failure({ ok: false, revoked: false, status: "not_found", code: "NOT_FOUND", retryable: false, message: error.message || NOTHING_REVOKED });
+  }
+  const rec = records?.[0];
+  const row = rec && typeof rec.item === "object" && rec.item ? rec.item : rec;
+  if ((row?.status ?? row?.state) !== "not_found") return null;
+  return failure({ ok: false, revoked: false, status: "not_found", code: "NOT_FOUND", retryable: false, message: row.message || row.detail || NOTHING_REVOKED });
+}
 
 /** One parameterised Cypher read against the graph. Keyless works (rate-limited taste);
  *  the key, when present, rides as X-API-Key and lifts the limit. */
@@ -60,14 +79,27 @@ export function registerWhisperTools(server, env = {}) {
 
   server.tool(
     "whisper_agents",
-    "Whisper control plane: register/identity/list/agent/policy/logs/connect/revoke agents on the Whisper network. Needs the WHISPER_API_KEY secret.",
+    "Whisper control plane: register/identity/list/agent/policy/logs/connect/revoke agents on the Whisper network. A revoke that matches nothing (already revoked, or not yours) comes back as an error with status not_found: nothing was revoked, and retrying will not change that. Needs the WHISPER_API_KEY secret.",
     {
       op: z.enum(["register", "identity", "list", "agent", "policy", "logs", "connect", "revoke"]),
       args: z.record(z.unknown()).optional().describe("op arguments, e.g. {label:'my-agent'} for register"),
     },
     async ({ op, args }) => {
       if (!env.WHISPER_API_KEY) return NO_KEY;
-      const res = await control(env.WHISPER_API_KEY).agents(op, args ?? {});
+      let res;
+      try {
+        res = await control(env.WHISPER_API_KEY).agents(op, args ?? {});
+      } catch (error) {
+        // NOT_FOUND is an answer: nothing of yours matched. Tell the model plainly, and
+        // that a retry will not change it, instead of letting a generic failure through.
+        const notFound = nothingRevoked({ error });
+        if (notFound) return notFound;
+        throw error;
+      }
+      if (op === "revoke") {
+        const notFound = nothingRevoked({ records: res.records });
+        if (notFound) return notFound;
+      }
       return text(res.records);
     },
   );
