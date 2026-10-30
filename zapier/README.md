@@ -32,7 +32,11 @@ zapier register "Whisper Agent Identity" -a private -y   # once
 zapier push
 ```
 
-`npm test` runs the offline unit tests (Cypher builder, envelope decoder, secret scrub);
+**Revoke Agent** on an agent that is already revoked, or not yours, stops the step with a
+`NotFoundError` and the control plane's message ("nothing was revoked: ..."). That is an answer,
+not an outage, so a retry will not change it.
+
+`npm test` runs the offline unit tests (Cypher builder, envelope decoder, revoke, secret scrub);
 `zapier validate` checks the app; `zapier invoke` runs any step locally (auth data in `.env`,
 e.g. `api_key=whisper_live_…` - never commit it).
 

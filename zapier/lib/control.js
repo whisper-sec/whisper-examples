@@ -47,12 +47,14 @@ const toRecords = (result) => {
   );
 };
 
-// Surface a problem+json error helpfully: detail > title > type, plus suggestions.
+// Surface a control-plane error helpfully. The front door's in-row error is {code, message,
+// retryable}; a problem+json body carries detail > title > type. Read all of them, plus
+// suggestions.
 const problemMessage = (err, status) => {
   if (!err || typeof err !== 'object') {
     return `Whisper control plane returned status ${status}`;
   }
-  let msg = err.detail || err.title || err.type || `status ${status}`;
+  let msg = err.message || err.detail || err.title || err.type || `status ${status}`;
   if (Array.isArray(err.suggestions) && err.suggestions.length) {
     msg += ` - ${err.suggestions.join('; ')}`;
   }
@@ -85,6 +87,12 @@ const callControl = async (z, bundle, op, args) => {
     const retryAfter = env.retry_after || (err && err.retry_after);
     if ((status === 429 || status === 503) && retryAfter) {
       throw new z.errors.ThrottledError(problemMessage(err, status), Number(retryAfter));
+    }
+    // NOT_FOUND is an answer, not a fault: the plane understood the call and found nothing
+    // of yours to act on. Keyed on the code, never on a bare 404. A plain Error halts the
+    // step; Zapier does not retry it the way it retries a ThrottledError.
+    if (err && typeof err === 'object' && err.code === 'NOT_FOUND') {
+      throw new z.errors.Error(problemMessage(err, status), 'NotFoundError', 404);
     }
     if (status === 401 || status === 403) {
       throw new z.errors.Error(problemMessage(err, status), 'AuthenticationError', status);

@@ -1,7 +1,7 @@
 {
   "name": "revokeAgent",
   "label": "Revoke",
-  "description": "Fully and irreversibly revoke an agent (op:revoke): withdraw its /128, PTR, tokens, and its API key. Returns the agent id and a status (revoked or not_found). Requires admin:dns scope. This cannot be undone.",
+  "description": "Fully and irreversibly revoke an agent (op:revoke): withdraw its /128, PTR, tokens, and its API key. Returns the agent id and status revoked. A revoke that matches nothing (already revoked, or not your agent) stops with a NOT_FOUND error saying nothing was revoked; do not retry it. Requires admin:dns scope. This cannot be undone.",
   "typeId": 4,
   "connection": "whisper-jijvrd"
 }
