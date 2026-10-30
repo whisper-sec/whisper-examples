@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// The Whisper security graph on Deno Deploy - 3.6B+ nodes of DNS/BGP/threat intelligence,
+// The Whisper security graph on Deno Deploy - 6.9B+ nodes of DNS/BGP/threat intelligence,
 // queryable with plain fetch. No dependencies.
 // Local: `deno run --allow-net --allow-env graph.ts`  ·  Deploy: `deno deploy`
 //

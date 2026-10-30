@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// The Whisper security graph on Vercel Functions - 3.6B+ nodes of DNS/BGP/threat
+// The Whisper security graph on Vercel Functions - 6.9B+ nodes of DNS/BGP/threat
 // intelligence, queryable with plain fetch. No dependencies.
 //
 // Tier 1 (keyless): GET /api/graph?host=<fqdn or IP>   - threat posture + vendor identity

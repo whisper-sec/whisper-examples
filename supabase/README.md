@@ -28,7 +28,7 @@ Set the secret before deploying: `supabase secrets set WHISPER_API_KEY=whisper_l
 
 ## Also here: query the security graph
 
-[`functions/graph/`](functions/graph/) queries the Whisper security graph (3.6B+ nodes of DNS /
+[`functions/graph/`](functions/graph/) queries the Whisper security graph (6.9B+ nodes of DNS /
 BGP / threat intelligence) with plain `fetch` - no dependency:
 
 ```

@@ -31,7 +31,7 @@ Set `WHISPER_API_KEY` in the site's environment variables before deploying (`net
 ## Also here: query the security graph
 
 [`netlify/functions/graph.mjs`](netlify/functions/graph.mjs) queries the Whisper security graph
-(3.6B+ nodes of DNS / BGP / threat intelligence) with plain `fetch` - no dependency:
+(6.9B+ nodes of DNS / BGP / threat intelligence) with plain `fetch` - no dependency:
 
 ```
 GET /.netlify/functions/graph?host=<fqdn|ip>     -> keyless: threat posture + operator identity

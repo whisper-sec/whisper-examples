@@ -37,7 +37,7 @@ module.exports = {
   display: {
     label: 'Run Cypher Query (Security Graph)',
     description:
-      'Run a read-only Cypher query against the Whisper security graph (3.6B+ nodes: HOSTNAME, IPV4/IPV6, ORGANIZATION, ASN; RESOLVES_TO, NAMESERVER_FOR, LINKS_TO). The escape hatch beyond the named recipes. Needs a Whisper API key.',
+      'Run a read-only Cypher query against the Whisper security graph (6.9B+ nodes: HOSTNAME, IPV4/IPV6, ORGANIZATION, ASN; RESOLVES_TO, NAMESERVER_FOR, LINKS_TO). The escape hatch beyond the named recipes. Needs a Whisper API key.',
   },
   operation: {
     perform,

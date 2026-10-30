@@ -36,7 +36,7 @@ module.exports = {
   display: {
     label: 'Assess Host (Security Graph)',
     description:
-      'Look up a hostname or IP in the Whisper security graph (3.6B+ nodes of DNS/BGP/threat intelligence): its threat label, severity band, evidence, and the vendor/operator behind it. Keyless - no API key needed.',
+      'Look up a hostname or IP in the Whisper security graph (6.9B+ nodes of DNS/BGP/threat intelligence): its threat label, severity band, evidence, and the vendor/operator behind it. Keyless - no API key needed.',
   },
   operation: {
     perform,

@@ -16,7 +16,7 @@ the control plane: mint agents (each with its own `/128` and key), set DNS polic
 logs, revoke.
 
 **The security graph, too.** *Query security graph* and *Run a graph recipe* hit the Whisper
-security graph (3.6B+ nodes of DNS / BGP / threat intelligence) **keyless** - a labelled threat
+security graph (6.9B+ nodes of DNS / BGP / threat intelligence) **keyless** - a labelled threat
 posture for any host, or the registered typosquats of a brand, with no API key. *Run raw Cypher*
 is the keyed escape hatch for any read the named recipes do not cover
 ([catalog](https://github.com/whisper-sec/whisper-catalog)).

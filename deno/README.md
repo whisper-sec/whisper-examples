@@ -41,7 +41,7 @@ one flaky echo service never fails the demo.
 
 ## Also here: query the security graph
 
-[`graph.ts`](graph.ts) queries the Whisper security graph (3.6B+ nodes of DNS / BGP / threat
+[`graph.ts`](graph.ts) queries the Whisper security graph (6.9B+ nodes of DNS / BGP / threat
 intelligence) with plain `fetch` - no dependency:
 
 ```

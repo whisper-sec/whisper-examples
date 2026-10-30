@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-# The Whisper security graph on Modal - 3.6B+ nodes of DNS/BGP/threat intelligence,
+# The Whisper security graph on Modal - 6.9B+ nodes of DNS/BGP/threat intelligence,
 # queryable from pure stdlib (urllib). No pip packages, no key for the read verbs.
 #
 #   Tier 1 (keyless):  modal run graph.py --host theblackservicenetwork.com

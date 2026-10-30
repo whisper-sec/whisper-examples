@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// The Whisper security graph on Cloudflare Workers - 3.6B+ nodes of DNS/BGP/threat
+// The Whisper security graph on Cloudflare Workers - 6.9B+ nodes of DNS/BGP/threat
 // intelligence, queryable from the edge with plain fetch. Deploy: `wrangler deploy`.
 //
 // Tier 1 (keyless): GET /?host=<fqdn or IP>     - threat posture + vendor identity

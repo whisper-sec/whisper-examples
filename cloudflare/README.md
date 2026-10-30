@@ -47,7 +47,7 @@ tier 2 fetched `https://v6.ident.me/` with `seen_ip` equal to the agent's `/128`
 
 ## Also here: query the security graph
 
-[`graph/`](./graph/) is a second Worker that queries the Whisper security graph (3.6B+ nodes of
+[`graph/`](./graph/) is a second Worker that queries the Whisper security graph (6.9B+ nodes of
 DNS / BGP / threat intelligence) with plain `fetch` - no SDK, no dependency:
 
 ```
